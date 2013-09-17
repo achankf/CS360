@@ -1,0 +1,13 @@
+True.
+\begin{itemize}
+\item
+Suppose $\epsilon \in L$.
+Then $L = \{\epsilon\} L \subset LL$.
+
+\item
+Suppose $\epsilon \not\in L$.
+Let $min(L)$ be the size of the smallest string $s \in L$.
+Since $s$ is non-empty, $min(L) \ge 1$.
+However, $L \not\subset LL$ because $min(LL) \ge 2min(L) \ge 2$.
+\end{itemize}
+The results prove that $\epsilon \in L \iff L \subset LL$.
