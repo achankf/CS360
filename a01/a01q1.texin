@@ -1,11 +1,20 @@
+\begin{enumerate}
+\item
 False.
-Let $\mathbb{P}$ be the set of prime numbers.
-Then for every $p_i \in \mathbb{P}$, let $F_i(x) = xp_i$, where p is a prime constant.
-Let $Y$ be a set that has members that are inductively constructed as follows.
+Let $Y$ be defined as follows.
 \begin{align*}
-Y &= \{ I(\{p_i\},\{F_i\}) : i \in \mathbb{P} \}\\
-	&= \{ \{ 2,2^2,2^3,\cdots\} , \{ 3,3^2,3^3,\cdots\}, \{ 5,5^2,5^3,\cdots\}, \cdots \}
+Y &= \{ y_1 = \{0\}^+, y_2 = \{1\}^+ \}\\
+	&= \{ \{ 0,00,000,\cdots\} , \{ 1,11,111,\cdots\} \}
 \end{align*}
-All members $y \in Y$ are infinite sets.
-Each $y$ is a set that contains the powers of a prime constant, so there is no common factor between $y_i$ and $y_j$, $i \ne j$.
+Both $y_1$ and $y_2$ are infinite sets, and each of them have different alphabets.
 Hence, $|\cap Y| = |\emptyset| = 0$ which is not infinite.
+\done
+
+\item
+False.
+Let $Y = \{ y_1 \}$ and $Z = \{ y_1, y_2 \}$, for $y_1, y_2$ defined in 1(a).
+Notice that $Y \subset Z$.
+Then, $\cap Y = Y$ because $Y$ only contains one infinite set, and $\cap Z = \emptyset$, as explained in 1(a).
+Thus, $\cap Y = Y \not\subset \emptyset = \cap Z$.
+\done
+\end{enumerate}
