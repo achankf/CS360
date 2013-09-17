@@ -8,6 +8,6 @@ Then $L = \{\epsilon\} L \subset LL$.
 Suppose $\epsilon \not\in L$.
 Let $min(L)$ be the size of the smallest string $s \in L$.
 Since $s$ is non-empty, $min(L) \ge 1$.
-However, $L \not\subset LL$ because $min(LL) \ge 2min(L) \ge 2$.
+However, $L \not\subset LL$ because $min(LL) \ge 2min(L) \ge min(L) + 1 > min(L)$.
+In other words, the shortest string in $L$ is not in $LL$.
 \end{itemize}
-The results prove that $\epsilon \in L \iff L \subset LL$.
