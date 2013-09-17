@@ -1,0 +1,11 @@
+False.
+Let $\mathbb{P}$ be the set of prime numbers.
+Then for every $p_i \in \mathbb{P}$, let $F_i(x) = xp_i$, where p is a prime constant.
+Let $Y$ be a set that has members that are inductively constructed as follows.
+\begin{align*}
+Y &= \{ I(\{p_i\},\{F_i\}) : i \in \mathbb{P} \}\\
+	&= \{ \{ 2,2^2,2^3,\cdots\} , \{ 3,3^2,3^3,\cdots\}, \{ 5,5^2,5^3,\cdots\}, \cdots \}
+\end{align*}
+All members $y \in Y$ are infinite sets.
+Each $y$ is a set that contains the powers of a prime constant, so there is no common factor between $y_i$ and $y_j$, $i \ne j$.
+Hence, $|\cap Y| = |\emptyset| = 0$ which is not infinite.
