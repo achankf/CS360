@@ -1,0 +1,36 @@
+\begin{enumerate}[(i)]
+\item
+$ababab \notin L_{times}$, because the core element $abaca$ has a $c$, and both $F_1$ and $F_2$ always expect the input has one $c$ and the result will always contain one $c$.
+\done
+
+\item
+Consider the following generating sequence.
+
+\begin{tabular}{l | l}
+abaca & core element\\
+abaacaa & $F_2$\\
+aabaacaaaa & $F_1$\\
+aaabaacaaaaaa & $F_1$
+\end{tabular}
+
+Therefore, $aaabaacaaaaaa \in L_{times}$.
+\done
+
+\item
+Let $s = aabacaaaa \notin L_{times}$.
+Since the string contains only one $a$ in between $b$ and $c$,
+$s$ cannot be built from $F_2$ as it increases the number of $a$'s in between $b$ and $c$.
+Hence, the only possibilities are either $s \in A$, or $s$ is constructed by repeatedly applying $F_1$ on the core element.
+
+Since $length(s) > length(``abaca")$, the first possibility is false.
+
+Constructing $s$ from repeatedly applying $F_1$ is impossible.
+Notice that the only $a$ in between $b$ and $c$ implies that $j = 1$ constantly.
+Also, the number of $a$'s in $abaca$ (core element) implies that $i = k = 1$.
+Consequently, $i + 1 = k + j$ always holds in this case.
+This means the numbers of $a$'s before $b$ and after $c$ are equal.
+However, $s$ has 2 $a$'s before $b$ and 4 $a$'s after $c$.
+Therefore $s \notin L_{times}$.
+\done
+
+\end{enumerate}
