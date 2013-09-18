@@ -1,0 +1,31 @@
+Let A be the wine glass, and B be the water glass.
+
+{\bf Base Cases} A has 3/4 glass of wine and B has 3/4 glass of water.
+\begin{itemize}
+\item
+A fills B. A has more wine since it only lose a portion of pure wine to B.
+\item
+B fills A. Since A originally contains 3/4 glass of wine, which is a majority, no matter how B pours into A, A will always contain more wine than water.
+\end{itemize}
+
+{\bf Inductive Steps} 
+Glass A has more wine than B.
+Notice that volume is not important because the question states that there is no loss of volume.
+\begin{itemize}
+\item
+{\bf Pouring from A to B} trivially makes A contain more wine.
+\item
+{\bf Pouring from B to A}
+Since the glass is being mixed thoroughly, if it pours some volume back, then that volume should consist of 50\% water and 50\% wine.
+The 50-50 split argument is valid because each glass must have be at least half full, and at least 25\% of liquid from one glass is being transfered to another glass.
+
+Assume A has $V_1$ unit of wine and $V_2$ unit of water, such that $V_1 > V_2$.
+B is going to pour $V_3$ unit volume (50\% each), such that A will not overflow.
+\begin{align*}
+\frac{1}{2}V_3 &= \frac{1}{2}V_3\\
+\implies V_1 + \frac{1}{2}V_3 &> V_2 + \frac{1}{2}V_3\\
+\implies Volume(wine) &> Volume(water)
+\end{align*}
+\end{itemize}
+Therefore, by structural induction, glass A will always contain more wine than water.
+\done

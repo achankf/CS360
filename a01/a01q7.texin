@@ -1,0 +1,25 @@
+\begin{enumerate}
+\item
+\begin{align*}
+\bigg( aa (b^*b(a+aa))^*b^* \bigg)+ \bigg( (a+\epsilon)(b^*b(a+aa))^*baa(b^*b(a+aa))^*b^* \bigg)
+\end{align*}
+There are two cases in this regular expression: ones that start with $aa$ or $aa$ is in the middle or at the end.
+\begin{itemize}
+\item
+The first part takes care of strings that start with $aa$, with arbitrary number of $b^*b(a+aa)$ blocks (e.g. $baa, bbbbba$, etc.), and possibly end with $b$'s.
+Notice that it accepts $aa$, too.
+\item
+The latter part takes care of the strings that contains at least one $baa$ in the middle or at the end -- I can put a $b$ in front of $aa$ because the first part already handles strings that start with $aa$.
+\end{itemize}
+Notice the entire regular expression accept strings that start with $a$, $aa$, or $b$.
+\done
+
+\item
+\begin{align*}
+\bigg( a(a^*b^*)^*b \bigg)+ \bigg( b(a^*b^*)^*a \bigg)
+\end{align*}
+The starting and ending characters are different imply that strings in the language must be at least 2 characters long -- either start with $a$ and end with $b$, or vice versa.
+The middle can be filled with any number of $a$'s and $b$'s blocks.
+\done
+
+\end{enumerate}
