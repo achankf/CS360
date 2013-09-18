@@ -3,7 +3,7 @@
 False.
 Let $Y$ be defined as follows.
 \begin{align*}
-Y &= \{ y_1 = \{0\}^+, y_2 = \{1\}^+ \}\\
+Y &= \{ y_1 = 0(0^*), y_2 = 1(1)^* \}\\
 	&= \{ \{ 0,00,000,\cdots\} , \{ 1,11,111,\cdots\} \}
 \end{align*}
 Both $y_1$ and $y_2$ are infinite sets, and each of them have different alphabets.
@@ -13,8 +13,8 @@ Hence, $|\cap Y| = |\emptyset| = 0$ which is not infinite.
 \item
 False.
 Let $Y = \{ y_1 \}$ and $Z = \{ y_1, y_2 \}$, for $y_1, y_2$ defined in 1(a).
-Notice that $Y \subset Z$.
+Notice that $Y \subseteq Z$.
 Then, $\cap Y = Y$ because $Y$ only contains one infinite set, and $\cap Z = \emptyset$, as explained in 1(a).
-Thus, $\cap Y = Y \not\subset \emptyset = \cap Z$.
+thus, $\cap y = y \not\subseteq \emptyset = \cap z$.
 \done
 \end{enumerate}

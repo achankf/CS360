@@ -2,12 +2,12 @@ True.
 \begin{itemize}
 \item
 Suppose $\epsilon \in L$.
-Then $L = \{\epsilon\} L \subset LL$.
+Then $L = \{\epsilon\} L \subseteq LL$.
 
 \item
 Suppose $\epsilon \not\in L$.
 Let $min(L)$ be the size of the smallest string $s \in L$.
 Since $s$ is non-empty, $min(L) \ge 1$.
-However, $L \not\subset LL$ because $min(LL) \ge 2min(L) \ge min(L) + 1 > min(L)$.
+However, $L \not\subseteq LL$ because $min(LL) \ge 2min(L) \ge min(L) + 1 > min(L)$.
 In other words, the shortest string in $L$ is not in $LL$.
 \end{itemize}
