@@ -1,6 +1,6 @@
 \begin{enumerate}[(i)]
 \item
-$ababab \notin L_{times}$, because the core element $abaca$ has a $c$, and both $F_1$ and $F_2$ always expect the input has one $c$ and the result will always contain one $c$.
+$ababab \notin L_{times}$, because the core element $abaca$ has a $c$, and both $F_1$ and $F_2$ always expect the input has one $c$ and the result will always contain one $c$, but the given string has no $c$.
 \done
 
 \item

@@ -14,7 +14,7 @@ Hence, $|\cap Y| = |\emptyset| = 0$ which is not infinite.
 False.
 Let $Y = \{ y_1 \}$ and $Z = \{ y_1, y_2 \}$, for $y_1, y_2$ defined in 1(a).
 Notice that $Y \subseteq Z$.
-Then, $\cap Y = Y$ because $Y$ only contains one infinite set, and $\cap Z = \emptyset$, as explained in 1(a).
-thus, $\cap y = y \not\subseteq \emptyset = \cap z$.
+Then, $\cap Y = y_1$ because $Y$ only contains one infinite set, and $\cap Z = \emptyset$, as explained in 1(a).
+thus, $\cap Y = y_1 \not\subseteq \emptyset = \cap Z$.
 \done
 \end{enumerate}

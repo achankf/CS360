@@ -17,7 +17,7 @@ Notice that volume is not important because the question states that there is no
 \item
 {\bf Pouring from B to A}
 Since the glass is being mixed thoroughly, if it pours some volume back, then that volume should consist of 50\% water and 50\% wine.
-The 50-50 split argument is valid because each glass must have be at least half full, and at least 25\% of liquid from one glass is being transfered to another glass.
+The 50-50 split argument is valid because each glass must have be at least half full, and there is an addition 50 split (due to both glasses started with 3/4 full).
 
 Assume A has $V_1$ unit of wine and $V_2$ unit of water, such that $V_1 > V_2$.
 B is going to pour $V_3$ unit volume (50\% each), such that A will not overflow.
