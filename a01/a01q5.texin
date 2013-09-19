@@ -3,29 +3,31 @@ Let A be the wine glass, and B be the water glass.
 {\bf Base Cases} A has 3/4 glass of wine and B has 3/4 glass of water.
 \begin{itemize}
 \item
-A fills B. A has more wine since it only lose a portion of pure wine to B.
+{\bf A fills B} A has more wine since it only lose a portion of pure wine to B.
 \item
-B fills A. Since A originally contains 3/4 glass of wine, which is a majority, no matter how B pours into A, A will always contain more wine than water.
+{\bf B fills A} Since A originally contains 3/4 glass of wine, which is a majority, no matter how B pours into A, A contains more wine than water.
 \end{itemize}
 
 {\bf Inductive Steps} 
-Glass A has more wine than B.
-Notice that volume is not important because the question states that there is no loss of volume.
+Suppose glass A has more wine than water.
 \begin{itemize}
 \item
-{\bf Pouring from A to B} trivially makes A contain more wine.
+{\bf Pouring from A to B}
+Since the liquid is being mixed thoroughly, so the proportion of wine and water will remain the same after A pours liquid into B.
+Hence, A remains having more wine than water.
 \item
 {\bf Pouring from B to A}
-Since the glass is being mixed thoroughly, if it pours some volume back, then that volume should consist of 50\% water and 50\% wine.
-The 50-50 split argument is valid because each glass must have be at least half full, and there is an addition 50 split (due to both glasses started with 3/4 full).
+\begin{claim}
+Glass B has more water than wine after the transfer.
+\end{claim}
+\begin{proof}
+After a few transfers, both A and B will have some wine molecules.
+Since, by assumption, glass A has more wine than water and there is no loss of molecules in the transfer, the balance of molecules must hold -- in particular, B has more water than wine.
+Now consider pouring from B to A -- since glass B is being mixed thoroughly, so the composition remains that B has more water than wine.
+\end{proof}
 
-Assume A has $V_1$ unit of wine and $V_2$ unit of water, such that $V_1 > V_2$.
-B is going to pour $V_3$ unit volume (50\% each), such that A will not overflow.
-\begin{align*}
-\frac{1}{2}V_3 &= \frac{1}{2}V_3\\
-\implies V_1 + \frac{1}{2}V_3 &> V_2 + \frac{1}{2}V_3\\
-\implies Volume(wine) &> Volume(water)
-\end{align*}
+It follows from the claim that, since there is no loss of molecules, glass A must have more wine than water.
+
 \end{itemize}
 Therefore, by structural induction, glass A will always contain more wine than water.
 \done
