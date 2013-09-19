@@ -1,7 +1,7 @@
 $\cap Y = \emptyset$.
 Consider the following construction of a set of subsets of $N$ -- make subsets of $N$ with one of its element ``missing".
 \begin{align*}
-Y' &= \{ B = N \setminus \{x\} \subset N : x \in N \}
+Y' &= \{ B = N \setminus \{x\} \subseteq N : x \in N \}
 \end{align*}
 Notice that $N \setminus B = \{x\}$, or the set that contains the ``missing" element, which is finite.
 Then, $\cap Y' = \emptyset$ because of the missing element in each of the subsets.
