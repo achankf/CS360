@@ -18,7 +18,7 @@ Hence, A remains having more wine than water.
 \item
 {\bf Pouring from B to A}
 \begin{claim}
-Glass B has more water than wine after the transfer.
+In this inductive case, glass B has more water than wine after the transfer.
 \end{claim}
 \begin{proof}
 After a few transfers, both A and B will have some wine molecules.
@@ -26,7 +26,7 @@ Since, by assumption, glass A has more wine than water and there is no loss of m
 Now consider pouring from B to A -- since glass B is being mixed thoroughly, so the composition remains that B has more water than wine.
 \end{proof}
 
-It follows from the claim that, since there is no loss of molecules, glass A must have more wine than water.
+It follows from the claim that, since matters need to be balanced (A has the reverse of B's configuration) and there is no loss of molecules, glass A must have more wine than water.
 
 \end{itemize}
 Therefore, by structural induction, glass A will always contain more wine than water.

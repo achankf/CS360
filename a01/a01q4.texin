@@ -8,9 +8,9 @@ Consider the following generating sequence.
 
 \begin{tabular}{l | l}
 abaca & core element\\
-abaacaa & $F_2$\\
-aabaacaaaa & $F_1$\\
-aaabaacaaaaaa & $F_1$
+abaacaa & $F_2(abaca)$\\
+aabaacaaaa & $F_1(abaacaa)$\\
+aaabaacaaaaaa & $F_1(aabaacaaaa)$
 \end{tabular}
 
 Therefore, $aaabaacaaaaaa \in L_{times}$.
@@ -24,12 +24,17 @@ Hence, the only possibilities are either $s \in A$, or $s$ is constructed by rep
 
 Since $length(s) > length(``abaca")$, the first possibility is false.
 
-Constructing $s$ from repeatedly applying $F_1$ is impossible.
+\begin{claim}
+By applying only $F_1$, the string has equal number of $a$'s before $b$ and after $c$.
+\end{claim}
+\begin{proof}
 Notice that the only $a$ in between $b$ and $c$ implies that $j = 1$ constantly.
-Also, the number of $a$'s in $abaca$ (core element) implies that $i = k = 1$.
+Also, the number of $a$'s in $abaca$ implies that $i = k = 1$ in the beginning.
 Consequently, $i + 1 = k + j$ always holds in this case.
 This means the numbers of $a$'s before $b$ and after $c$ are equal.
+\end{proof}
 However, $s$ has 2 $a$'s before $b$ and 4 $a$'s after $c$.
+Hence, constructing $s$ from repeatedly applying $F_1$ is impossible.
 Therefore $s \notin L_{times}$.
 \done
 
