@@ -1,6 +1,6 @@
 \begin{itemize}
 \item
-Deriving $r_2$ from $r_1$ (with informal description):
+Deriving (one-way) $r_2$ from $r_1$:
 \begin{align*}
 & \lambda + (0+1)^*1 & \text{Starting from }r_1\\
 & \lambda + (0^*1^*)^*1 & \text{Rewrite }(0+1)^*\\
@@ -10,14 +10,14 @@ Deriving $r_2$ from $r_1$ (with informal description):
 Since $r_2$ can be derived from $r_1$, therefore $L(r_1) \subseteq L(r_2)$.
 
 \item
-Deriving $r_1$ from $r_2$ (with informal description):
+Deriving (one-way) $r_1$ from $r_2$:
 \begin{align*}
 & (0^*1)^* & \text{Starting from }r_2\\
 & (0^*1)^* + (0^*1)^* & \text{Using $A \cup A = A$}\\
 & ( \lambda + 0^*1 ) + (0^*1)^* & \text{Remove the star by adding $\lambda$}\\
 & ( \lambda + 0^*1 ) + 1^* & \text{``Reducing" $(0^*1)^*$ to $1^*$}\\
 & \lambda + ( 0^*1 + 1^*1 ) & \text{Split an one from $1^*$, and then regroup the brackets}\\
-& \lambda + ( 0^* + 1^* ) 1& \text{``Factor" out the 1}
+& \lambda + ( 0^* + 1^* ) 1& \text{Both $0^*1$ and $1^*1$ end with 1}
 \end{align*}
 Since $r_1$ can be derived from $r_2$, therefore $L(r_2) \subseteq L(r_1)$.
 \end{itemize}
