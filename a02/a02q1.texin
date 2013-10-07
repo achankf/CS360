@@ -54,27 +54,41 @@ M is the following:
 \begin{tikzpicture}[
     >=stealth,
     shorten >=1pt,
-    node distance=3cm,
+		node distance=2cm,
     on grid,
     auto,
     state/.append style={minimum size=2em},
     thick
 ]
-   \node[state,initial,accepting] (q_0)   {even,even}; 
-   \node[state,accepting](q_1) [above right=of q_0] {odd,even};
-   \node[state,accepting](q_2) [below right=of q_0] {even,odd};
-   \node[state](q_3) [below right=of q_1] {odd,odd};
+   \node[state,initial,accepting] (q_0)   {$q_0$}; 
+   \node[state,accepting](q_1) [above right=of q_0] {$q_1$};
+   \node[state,accepting](q_2) [below right=of q_0] {$q_2$};
+   \node[state](q_3) [below right=of q_1] {$q_3$};
     \path[->] 
-    (q_0) edge[bend left=20]  node {a} (q_1)
-    			edge[bend left=20]  node {b} (q_2)
-		(q_1) edge[bend left=20]	node {a} (q_0)
-    			edge[bend left=20]  node {b} (q_3)
-		(q_2) edge[bend left=20]	node {a} (q_3)
-    			edge[bend left=20]  node {b} (q_0)
-		(q_3) edge[bend left=20]	node {a} (q_2)
-    			edge[bend left=20]  node {b} (q_1)
+    (q_0) edge[bend left=10]  node {a} (q_1)
+    			edge[bend left=10]  node {b} (q_2)
+		(q_1) edge[bend left=10]	node {a} (q_0)
+    			edge[bend left=10]  node {b} (q_3)
+		(q_2) edge[bend left=10]	node {a} (q_3)
+    			edge[bend left=10]  node {b} (q_0)
+		(q_3) edge[bend left=10]	node {a} (q_2)
+    			edge[bend left=10]  node {b} (q_1)
 	;
 \end{tikzpicture}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+$\delta$	& $\bm{q_0}$ & $\bm{q_1}$ & $\bm{q_2}$ & $q_3$ \\\hline
+a		 			& $q_1$ & $q_0$ & $q_3$ & $q_2$ \\
+b					& $q_2$ & $q_3$ & $q_0$ & $q_1$ \\
+\hline
+\end{tabular}
 
+Explanation:
+$q_0$ is both even.
+$q_1$ is the number of a's odd, b's even.
+$q_2$ is the number of a's even, b's odd.
+$q_3$ is both odd.
+
+Therefore, $M = (\{a,b\}, \{q_0,q_1,q_2,q_3\}, q_0, \delta, \{q_0,q_1,q_2\})$.
 \done
 \end{enumerate}
