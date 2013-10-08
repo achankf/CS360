@@ -77,6 +77,6 @@ $\delta$ follows the traversal order of a trie -- as in upon reading a valid cha
 $F$ is the set of leaf nodes of the trie.
 \end{itemize}
 
-Finally, by definition, the size of a trie is at most $1 + \sum_{i=1}^k |w_i|$ -- the root + at most 1 node for each character (usually less because some nodes can be contracted, as in the example).
+Finally, by definition, the size of a trie is at most $1 + \sum_{i=1}^k |w_i|$, which includes the root + at most 1 node for each character (usually less because some nodes can be contracted, as in the example).
 \done
 \end{enumerate}
