@@ -1,0 +1,97 @@
+\begin{enumerate}[i]
+\item
+Since in a DFA all letters need an edge, we define a ``garbage" state, $G$, so that every missing edge in the NFA will go into that state.
+
+\begin{tikzpicture}[
+    >=stealth,
+    shorten >=1pt,
+		node distance=2cm,
+    on grid,
+    auto,
+    state/.append style={minimum size=2em},
+    thick
+]
+   \node[state,initial] (A)   {$A$}; 
+   \node[state](G) [below right=of A] {$G$};
+   \node[state](B) [below left=of G] {$B$};
+   \node[state,accepting](C) [above right=of G] {$C$};
+    \path[->] 
+		(A) edge node {a} (G)
+		(B) edge node {c} (G)
+		(C) edge node {b} (G)
+		(G) edge[loop below] node {a,b,c} ()
+		;
+\end{tikzpicture}
+
+\item
+Since state $C$ is the only state the has 2 out-going edge for $a$, so we create a new state $AB$.
+
+\begin{tikzpicture}[
+    >=stealth,
+    shorten >=1pt,
+		node distance=2.5cm,
+    on grid,
+    auto,
+    state/.append style={minimum size=2em},
+    thick
+]
+   \node[state,initial] (A)   {$A$}; 
+   \node[state](G) [below right=of A] {$G$};
+   \node[state](B) [below left=of G] {$B$};
+   \node[state,accepting](C) [above right=of G] {$C$};
+   \node[state](AB) [below right=of G] {$AB$};
+    \path[->] 
+		(A) edge node {a} (G)
+		(B) edge node {c} (G)
+		(C) edge node {b} (G)
+		(AB) edge[bend left=10] node {a} (B)
+		(AB) edge[loop below] node {b} ()
+		(AB) edge[bend right=10] node {c} (C)
+		(G) edge[loop below] node {a,b,c} ()
+		;
+\end{tikzpicture}
+
+\item
+The rest of the states either have missing edges, which go to the garbage state, or have one edge per character, which is what we want for the DFA.
+\end{enumerate}
+
+\begin{tikzpicture}[
+    >=stealth,
+    shorten >=1pt,
+		node distance=3.5cm,
+    on grid,
+    auto,
+    state/.append style={minimum size=2em},
+    thick
+]
+   \node[state,initial] (A)   {$A$}; 
+   \node[state](G) [below right=of A] {$G$};
+   \node[state](B) [below left=of G] {$B$};
+   \node[state,accepting](C) [above right=of G] {$C$};
+   \node[state](AB) [below right=of G] {$AB$};
+    \path[->] 
+		(A) edge node {a} (G)
+				edge[bend left=5] node {b} (B)
+				edge[bend left=5] node {c} (C)
+		(B)	edge[loop below] node {a} ()
+				edge[bend left=5] node {b} (A)
+				edge node {c} (G)
+		(C) edge[bend left=5] node {a} (AB)
+				edge node {b,c} (G)
+		(AB) edge[bend left=5] node {a} (B)
+				 edge[loop below] node {b} ()
+				 edge[bend left=5] node {c} (C)
+		(G) edge[loop below] node {a,b,c} ()
+	;
+\end{tikzpicture}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+$\delta$	& $A$ & $B$ & $\bm{C}$ & $AB$ & $G$ \\\hline
+a		 			& $G$ & $B$ & $AB$ & $B$ & $G$ \\
+b					& $B$ & $A$ & $G$ & $AB$ & $G$ \\
+c					& $C$ & $G$ & $G$ & $C$ & $G$ \\
+\hline
+\end{tabular}
+
+Therefore, $M = (\{a,b,c\}, \{ A, B, C, AB, G\}, \{A\}, \delta, \{C\})$.
+\done
