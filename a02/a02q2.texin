@@ -1,17 +1,23 @@
 \begin{enumerate}
 \item
 Let $S = \{z\in \Sigma^* : yz \in L(M)\}$, $T = \{z\in \Sigma^* : xz \in L(M)\}$.
-Suppose by way of contradiction that there exists $xz \in T$ but $xz \not\in S$.
-Since $M$ has only 1 accepting state, say $q_{accept}$, so for all $yz \in S$, $\hat\delta(q_0, yz) = q_{accept}$.
+Suppose by way of contradiction that there exists $z \in T$ but $z \not\in S$.
 
-Consequently, we have
+Since $M$ has only 1 accepting state, say $q_{accept}$, then for all $x$ we have
 \begin{align*}
-\hat\delta(q_0,xz) &= q_{accept} & \text{because $xz \in L(M)$, and $M$ only has one state} \\
-	&= \hat\delta(q_0, yz)
+\hat\delta(q_0,xz) &= q_{accept} & \text{because $z \in T$ and $x \in L(M)$}
 \end{align*}
-That means $xz$ is accepted by the language $S$, which contradicts our assumptions.
+However, by our assumption that $z \not\in S$, then for all $y \in L(M)$,
+\begin{itemize}
+\item
+either $yz \not\in L(M)$, which is impossible since $z \in T$, so $yz \in L(M)$;
+\item
+or $M$ accepts $yz$ in states other than $q_{accept}$; however, $|F| = 1$, so that is also impossible.
+\end{itemize}
+
+Hence, we have arrived to a contradiction.
 Therefore, $T \subseteq S$.
-Then, we can use the same arguments to deduce that $S \subseteq T$.
+Then, we can use similar arguments to deduce that $S \subseteq T$.
 Together, we have $T = S$, as required.
 \done
 
