@@ -5,7 +5,7 @@ Let $S = \{z\in \Sigma^* : yz \in L(M)\}$ be the set of suffixes of $L(M)$.
 
 {\bf Base Case}
 Let $z = \epsilon$.
-Then clearly, $xy \in S$.
+Then clearly, $xz \in S$.
 
 {\bf Inductive Step}
 Suppose by way of contradiction that $\exists xz \in L(M)$ but $xz \not\in S$.
@@ -35,11 +35,11 @@ Since each time the $\delta$ takes a state and a character, $\delta(q_i, w_k)$ m
 Consider the number of a's and b's that $w$ up to the $k$-th character can be in, which, by the response for 1a, we have 4 possible permutations (even-even, even-odd, odd-even, odd-odd).
 
 However, by the pigeonhole principle, 4 permutations in 3 states means 1 of the states must contain 2 permutations.
-In other words, at least one of $\#_a(w)$ and/or $\#_b(w)$ is both odd and even, which is a contradiction.
+In other words, at least one of $\#_a(w)$ and/or $\#_b(w)$ is {\bf odd and even at the same time}, which is a contradiction.
 \end{proof}
 
 Finally, we know that the DFA of $L$ must have at least 4 states for each of the permutations.
-Since there are 3 permutations that describes $w$ contains a even number of $a$'s and/or $b$'s; therefore, the DFA of $L$ needs at least 3 accepting states.
+Since there are 3 permutations that describes $w$ contains a even number of $a$'s or $b$'s; therefore, the DFA of $L$ needs at least 3 accepting states.
 
 Therefore, there exists a regular language that cannot be compute by a DFA that has 1 accepting state.
 \done
@@ -47,7 +47,7 @@ Therefore, there exists a regular language that cannot be compute by a DFA that 
 \item
 Let's prove by induction.
 
-{\bf Base Case} If $M$ has 1 accepting state, then $A_1 = M$.
+{\bf Base Case} If $M$ has 0 (the empty set) or 1 accepting state, then $A_1 = M$.
 Thus,
 \begin{align*}
 L(M) = \cup_{i=1}^k L(A_i) = L(A_1)
@@ -61,13 +61,13 @@ A_i = (\Sigma, Q, q_0, \delta, \{f_i\})
 for the $i$-th accepting states.
 Notice that $A_i$ must accept a word $w$ such that whenever $w$ is fetched to $M$ and stopped at $f_i$ (i.e. $\hat\delta(q_0, w) = f_i$).
 
-Since by definition $F$ is finite, so there exists DFA's $A_1, \cdots, A_k$ that have one accepting state, as described above.
+Since by definition $F$ is finite, so DFA's $A_1, \cdots, A_k$ can be built from the description above.
 Then, we can construct a {\bf product automaton} of $A_1 \times \cdots \times A_k$, with accepting states (the only thing we need to define) as 
 \begin{align*}
 F &= \{(s_1, \cdots, s_k) \in F_1 \times \cdots \times F_k : s_i = f_i \text{ or } s_j = f_j, i \neq j\}
 \end{align*}
 
-The product automaton accepts $L(M)$  because it runs the $k$ automata simultaneously, and it accepts a word $w$ as long as one of them accepts $w$.
-Notice $L(A_1 \times \cdots \times A_k) = \cup_{i=1}^k L(A_i)$; therefore, $L(M) = \cup_{i=1}^k L(A_i)$, as required.
+The product automaton accepts $L(M)$  because it runs the $k$ finite automata simultaneously, and it accepts a word $w$ as long as one of them accepts $w$, and we have all accepting states covered by each $A_i$.
+Finally, $L(A_1 \times \cdots \times A_k) = \cup_{i=1}^k L(A_i)$; therefore, $L(M) = \cup_{i=1}^k L(A_i)$, as required.
 \done
 \end{enumerate}

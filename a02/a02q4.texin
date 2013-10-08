@@ -1,0 +1,82 @@
+\begin{enumerate}
+\item
+Let's define the NFA $A_{w}$ for the word $w$ as the following: $q_0$ be the starting state, $q_i$ be the state for reading the $i$-th character correctly.
+Then, $q_{|w|}$ would be the accepting state for $w$.
+Consequently, we have $Q = \{q_{0}, q_{1}, \cdots, q_{|w|} \}$, $F = q_{w|}$.
+
+Then, we just need to join $q_i$ and $q_j$ with a edge for the $j$-th character -- that is our $\delta$.
+We have a NFA that has $1 + |w|$ states.
+
+Now, we add an extra starting state $q_{start}$, then join it to each of the starting states of $A_i$ by an $\epsilon$, so we have an $\epsilon$-NFA for now.
+Then, we do $\epsilon$-closure to merge all starting states into $q_{start}$.
+Since the set of word is finite, the operation is legal; hence, the result is a NFA, which has
+\begin{align*}
+\#states &= 1 -k +  \sum_{i=1}^k (|w_i| + 1) & \text{$k$ less because they are merged into $q_{start}$} \\
+	&= 1 + \sum_{i=1}^k |w_i|
+\end{align*}
+As required.
+\done 
+
+\item
+First, recall $A_1$ from 4a.
+We need to convert $A_1$ into DFA with the same number of nodes.
+However, the problem is how we backtrack, which can be solved by using the Knuth-Morris-Pratt algorithm that I learned from CS240.
+Now consider the following heuristic:
+For each character, we assume there is a mismatch, then we construct a word $w'$ such that it contains all characters of $w_1$ before the mismatched character, and then append the mismatched character.
+Then, we look for the proper suffix of $w'$ that match with the prefix of $w_1$.
+Then we create an edge from the current character (state) to the end of the prefix.
+
+For example, if we have $w =aabbaa$, then the transition table (with the mismatch states in bold) would look like the following.
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+$w$ & a & a & b & b & a & a & \\
+\hline
+$\delta$ & $q_0$ & $q_1$ & $q_2$ & $q_3$ & $q_4$ & $q_5$ & $q_6$ \\
+\hline
+a & $q_1$ & $q_2$ & $\bm{q_1}$ & $\bm{q_0}$ & $q_5$ & $q_6$ & $q_6$\\
+b & $\bm{q_0}$ & $\bm{q_0}$ & $q_3$ & $q_4$ & $\bm{q_0}$ & $\bm{q_0}$ & $q_6$\\
+\hline
+\end{tabular}
+
+Then, the string $aaabbaa$ will match: a mismatch occurs when reading the $3^{rd}$ character, the DFA will backtrack to $q_1$ for having read 2 $a$'s already.
+
+Therefore, $A_{w_1} = (\{a,b\}, Q_1, q_0, \delta, \{q_{|w_1|}\})$ ($Q_1$ as in the states for the NFA $A_1$).
+Thus, the number of states of $A_{w_1}$ is the same as that of $A_1$, which is $1 + |w_1|$.
+\done
+
+\item
+First consider the elemination of extra states: if $w_i$ is a proper prefix of $w_j$, the $w_j$ can be ignore.
+This means we can possibly filter $\{w_1, \cdots, w_k\}$ into a smaller set.
+
+Consider the trie abstract data type (again from CS240).
+A trie is a tree that contains a list of words, such that a node can be split iff two words do not have the same prefix.
+For example, the following is a trie that accepts the language $\{aaa, abb\}$.
+
+\Tree
+[.a
+	[.a [.a ] ]
+	[.b [.b ] ]
+]
+
+A word can be search by transversing the trie from the root to bottom, just like the NFA from 4a, but trie has no backtracking because it is based on a tree (acyclic).
+The problem of backtracking can, again, be solved by using the Knuth-Morris-Pratt algorithm, as in 4b.
+
+Then, the component of the DFA that accepts $L(N_{\{w_1,\cdots,w_k\}})$ would be the following.
+
+\begin{itemize}
+\item
+$\Sigma = \{a,b\}$ 
+\item
+$Q$ is the set of nodes in the trie.
+\item
+$q_0$ is the root of the trie.
+\item
+$\delta$ follows the traversal order of a trie -- as in upon reading a valid character, the trie returns the next node; then the KMP algorithm enables backtracking for invalid characters.
+\item
+$F$ is the set of leaf nodes of the trie.
+\end{itemize}
+
+Finally, by definition, the size of a trie is at most $1 + \sum_{i=1}^k |w_i|$ -- the root + at most 1 node for each character (usually less because some nodes can be contracted, as in the example).
+\done
+\end{enumerate}
