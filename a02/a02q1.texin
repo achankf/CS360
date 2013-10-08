@@ -42,7 +42,7 @@ c					& $q_3$ & $q_3$ & $q_3$ & $q_0$ & $q_4$ \\
 
 Explanation:
 $q_1$ is the state that has recently read an $a$, $q_2$ read $b$, $q_3$ read $c$, and $q_4$ is the state where $ab$ has been read.
-$q_0$ is the state that has read either nothing (empty string) or a string that has $c$ as a substring.
+$q_0$ is the state that has read either nothing (empty string) or a string that has $c$ as a substring; notice $q_3$ is needed because $q_0$ cannot remember that it has read either $a$ or $b$.
 Notice $\epsilon$ is in $L(M)$ because it does not have $ab$ as a substring, hence $q_0$ is an accepting state.
 
 Therefore, $M = (\{a,b,c\}, \{q_0,q_1,q_2,q_3,q_4\}, q_0, \delta, \{q_0,q_1,q_2,q_3\})$.
