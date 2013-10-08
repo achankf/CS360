@@ -36,7 +36,7 @@ Let $w \in L$.
 Consider the possibilities in the number of a's and b's up to the $k$-th character of $w$. By the response for 1a, we have 4 possible combinations (even-even, even-odd, odd-even, odd-odd), and 3 of which meets our accepting requirement.
 
 However, by the pigeonhole principle, 3 accepting possibilities in 2 accepting states means one of the states must contain 2 possibilities.
-In other words, either the value of $\#_a(w)$ or $\#_b(w)$ is {\bf both odd and even at the same time}, which is a contradiction.
+In other words, we have to create a state for which the number of $a$'s (or $b$'s) is {\bf both odd and even at the same time}, which is impossible; hence a contradiction.
 Therefore, the $DFA$ for $L$ requires at least 3 accepting states.
 \end{proof}
 Therefore, there exists a regular language that cannot be compute by a DFA that has 1 accepting state.
