@@ -1,0 +1,18 @@
+\begin{enumerate}
+\item
+Let's prove by induction.
+
+{\bf Base Case}
+Suppose $K=\{\emptyset \}$, then $\cap K = \emptyset$, which is a regular language.
+
+{\bf Inductive Step}
+Suppose $K = \{ R_n : R_n \text{ is a regular language, } n \in \mathbb{N}\}$, and suppose $G = \cap^{n-1}_{i=1} K$ is a regular language.
+Then $\cap K = G \cap R_n$.
+By set theory, $\cap K$ can be rewritten to the following in terms of union and set difference.
+\begin{align*}
+\cap K &= G \cap R_n \\
+	&= (G \cup R_n) \setminus \big( (G \setminus R_n) \cup (R_n \setminus G) \big)
+\end{align*}
+Since we showed in Question 1 that set difference is closed under regular languages, and by definition union is also closed under regular langauges; therefore, $\cap K$ is also closed under regular languages for all finite sets $K$.
+\done
+\end{enumerate}

@@ -1,0 +1,60 @@
+\begin{enumerate}
+\item
+Given the regular expressions $r_1$, $_2$.
+Then there exists their respective DFA's $D_1 = (\Sigma, Q^1, q_0^1, \delta^1, F^1)$ and $D_2 (\Sigma, Q^2, q_0^2, \delta^2, F^2)$, such that $L(D_1) = L(r_1)$ and $L(D_2) = L(r_2)$.
+Then construct a product automaton $D_3$ for $D_1$ and $D_2$ such that the final states are
+\begin{align*}
+F &= \{(q^1_i,q^2_j) \in Q^1 \times Q^2 : q^1_i \in F^1 \text{ and } q^2_j \not\in F^2 \}
+\end{align*}
+\begin{claim}
+$L(D_3) = L(r_1) \setminus L(r_2)$.
+\end{claim}
+\begin{proof}
+Let's prove by showing a two sided inclusion.
+
+{\bf $\bm\rightarrow$ direction}
+Suppose a word $w \in \Sigma^*$ is accepted by $D_3$.
+It means that $D_3$ runs $\hat\delta$ on $w$:
+\begin{align*}
+\hat\delta((q^1_0,q^2_0), w) = (\hat\delta^1(q^1_0, w), \hat\delta^2(q^2_0, w)) \in F^1 \times (Q^2 \setminus F^2) = F
+\end{align*}
+So $D_1$ accepts $w$ too, thus $w \in L(r_1)$.
+On the other hand, $\hat\delta^2(q^2_0, w) \not\in F^2$, so $D_2$ does not accept $w$, thus $w \not\in L(r_2)$.
+In other words, $L(r_1) \setminus L(r_2)$ contains the language for $L(D_3)$.
+Therefore, $L(D_3) \subseteq L(r_1) \setminus L(r_2)$.
+
+{\bf $\bm\leftarrow$ direction}
+Suppose a word $w \in \Sigma^*$ is accepted by $L(r_1) \setminus L(r_2)$.
+By definition, $w \in L(r_1)$ and $w \not\in L(r_2)$.
+Hence, their respective DFA's return
+\begin{align*}
+\hat\delta^1(q^1_0, w) &\in F^1\\
+\hat\delta^2(q^2_0, w) &\not\in F^2\\
+\implies (\hat\delta^1(q^1_0, w), \hat\delta^2(q^2_0, w)) &\in F
+\end{align*}
+In other words, $D_3$ accepts the language that $L(r_1) \setminus L(r_2)$ accepts.
+Therefore, $L(r_1) \setminus L(r_2) \subseteq L(D_3)$.
+
+Together, $L(D_3) = L(r_1) \setminus L(r_2)$.
+\end{proof}
+Since there exists a DFA for $L(r_1) \setminus L(r_2)$, so the regular expression $r$ exists.
+\done
+\item
+Let $G= L((ab+b)^*+(ba+b)^*) \setminus L(b^*ab^*)$.
+The regular expression for $G$ is
+\begin{align*}
+r = \underbrace{b^*(ab+ba)b^*(ab+ba)b^*}_\text{at least 2 $a$'s}(b^*(ab+ba)^*)^* + \epsilon
+\end{align*}
+How I did it:
+I make the following observations about the given regular expression.
+\begin{itemize}
+\item
+The ``not" part, $L(b^*ab^*)$, accept any string that contains exactly one $a$, so my regular expression needs to have at least 2 $a$'s.
+\item
+The empty string is in $L(r)$; so $r$ either has no $a$ or at least 2 $a$'s.
+\item 
+Notice $(ab+b)^*+(ba+b)^*$ is the same as having $(ab+ba)$ sandwitched by $b^*$.
+\item
+Once I have 2 $a$'s, I can just pad the remaining with an arbitrary number of $(ab+ba)$'s and $b$'s.
+\end{itemize}
+\end{enumerate}

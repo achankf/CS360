@@ -1,0 +1,27 @@
+\begin{enumerate}
+\item
+Suppose $L$ is a regular languages, so $L$ has a DFA, $D = (\Sigma, Q, q_0, \delta, F)$, that accepts every word in $L$.
+
+Consider the complement of $P(L)$.
+\begin{align*}
+P^c(L) = \{w \in L : \forall x,y,z, w = xyz, \text{ if $y \ne \epsilon$ then } \forall i, xy^iz \in L\}
+\end{align*}
+Since, by assumption, $L$ is a regular language, the pumping lemma implies that $xy^iz \in L$ for all $xyz \in L$, for all $i$.
+This means the condition for $P^c(L)$ is not necessary, and we can rewrite it to the following.
+\begin{align*}
+P^c(L) = \{w \in L\} = L
+\end{align*}
+So $D$ accepts all words in $P^c(L)$.
+Then, using $D$ for the language $P^c(L)$ we can build another DFA for $P(L)$.
+\begin{align*}
+D' = (\Sigma, Q, q_0, \delta, Q \setminus F)
+\end{align*}
+This means that $P(L)$ is a regular language, given that $L$ is a regular language.
+\done
+\item
+Let $L = \{ 0^n1^n : n \in \mathbb{N} \}$, which is not a regular language.
+Then for all $xyz \in L$, let $x = \epsilon$, $y = 0^n$, and $z = 1^n$.
+If $i = 100$, then $xy^iz = 1^{100n}0^n \not\in L$, so every element in $L$ satisfies the condition for $P(L)$.
+Thus, $P(L) = L$, so $P(L)$ is not regular.
+\done
+\end{enumerate}
