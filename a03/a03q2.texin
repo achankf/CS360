@@ -3,7 +3,7 @@
 Let's prove by induction.
 
 {\bf Base Case}
-Suppose $K=\{\emptyset \}$, then $\cap K = \emptyset$, which is a regular language.
+Suppose for some regular language $R$, $K=\{R \}$, then $\cap K = R$, which is a regular language.
 
 {\bf Inductive Step}
 Suppose $K = \{ R_n : R_n \text{ is a regular language, } n \in \mathbb{N}\}$, and suppose $G = \cap^{n-1}_{i=1} K$ is a regular language.
@@ -14,5 +14,28 @@ By set theory, $\cap K$ can be rewritten to the following in terms of union and 
 	&= (G \cup R_n) \setminus \big( (G \setminus R_n) \cup (R_n \setminus G) \big)
 \end{align*}
 Since we showed in Question 1 that set difference is closed under regular languages, and by definition union is also closed under regular langauges; therefore, $\cap K$ is also closed under regular languages for all finite sets $K$.
+\done
+\item
+Suppose by way of contradiction that $\cap K$ is a regular language, for every infinite $K$.
+First, let's unfold $\cap K$ for {\bf finite} $K$.
+Let some $S \subseteq K$ for the sets in the set differences (we don't care).
+\begin{align*}
+\cap K &= (G \cup R_n) \setminus S \\
+	&= ((G \cup R_{n-1}) \setminus S) \cup R_n) \setminus S \\
+	&= (G \cup R_{n-1} \cup R_n) \setminus S & \text{since $K$ is finite for now, do the union first}\\
+	&= \cdots\\
+	&= (\cup_{i=1}^n R_{i}) \setminus S & \text{ for some $S \subseteq K$}
+\end{align*}
+\begin{claim}
+If $n \rightarrow \infty$, then $\cup_{i=1}^n R_{i}$ is not closed under regular languages.
+\end{claim}
+\begin{proof}
+Let $R_i = \{1^i0^i\}$.
+$R_i$ is a regular language because $i$ is a constant.
+However, the union is $\cup_{i=1}^{\infty} R_{i} = \{1^n0^n : n \in \mathbb{N}\}$, which was shown by the professor that it is not a regular language.
+\end{proof}
+When $K$ is infinite, the intersection becomes an infinite union (minus some subset of $K$ that we do not care), which is not closed under regular languages -- a contradiction.
+Thus, $\cap K$ is not closed under regular languges for infinite $K$.
+Therefore, the claim in 2a does not hold for infinite $K$.
 \done
 \end{enumerate}
