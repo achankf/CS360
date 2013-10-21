@@ -1,0 +1,37 @@
+\begin{enumerate}
+\item
+\item
+$L_3$ is regular.
+Notice the periodic nature of modulo.
+Consider the following DFA, where each label is $n_a(w) - n_b(w)$ (modulo 5):
+
+\begin{tikzpicture}[
+    >=stealth,
+    shorten >=1pt,
+		node distance=2.5cm,
+    on grid,
+    auto,
+    state/.append style={minimum size=2em},
+    thick
+]
+   \node[state,initial] (q_0)   {0}; 
+   \node[state](q_1) [above right=of q_0] {1};
+   \node[state,accepting](q_2) [right=of q_1] {2};
+   \node[state](q_3) [below=of q_2] {3};
+   \node[state](q_4) [left=of q_3] {4};
+    \path[->] 
+    (q_0) edge[bend left=10]  node {a} (q_1)
+    			edge[bend left=10]  node {b} (q_4)
+		(q_1) edge[bend left=10]	node {a} (q_2)
+    			edge[bend left=10]  node {b} (q_0)
+		(q_2) edge[bend left=10]	node {a} (q_3)
+    			edge[bend left=10]  node {b} (q_1)
+		(q_3) edge[bend left=10]	node {a} (q_4)
+    			edge[bend left=10]  node {b} (q_2)
+		(q_4) edge[bend left=10]	node {a} (q_0)
+    			edge[bend left=10]  node {b} (q_3)
+	;
+\end{tikzpicture}
+\item
+\item
+\end{enumerate}
