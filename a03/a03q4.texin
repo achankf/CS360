@@ -2,9 +2,8 @@
 \item
 $L_1$ is regular.
 Notice $L_1$ implies the size of each block of $a$'s is less than or equal to 3, which followed by another block of size greater than 3.
-This means we need 7 states for the status on the blocks and 1 more state for the start state.
-Consider the following $\epsilon$-NFA.
-Notice the $\epsilon$-transition from $4b$ to the start state -- at that point, the condition is satisfied and we can repeat the process for the upcoming characters.
+This means we need 7 states for the status on the blocks.
+Consider the following NFA.
 
 \begin{tikzpicture}[
     >=stealth,
@@ -19,10 +18,9 @@ Notice the $\epsilon$-transition from $4b$ to the start state -- at that point, 
    \node[state,accepting](q_1) [right=of q_0] {1a};
    \node[state,accepting](q_2) [right=of q_1] {2a};
    \node[state](q_3) [right=of q_2] {3a};
-   \node[state](q_4) [right=of q_3] {1b};
-   \node[state](q_5) [below=of q_4] {2b};
+   \node[state](q_4) [below=of q_3] {1b};
+   \node[state](q_5) [left=of q_4] {2b};
    \node[state](q_6) [left=of q_5] {3b};
-   \node[state,accepting](q_7) [left=of q_6] {4b};
     \path[->] 
     (q_0) edge[bend left=10]  node {a} (q_1)
     			edge[loop below]  node {b} ()
@@ -33,8 +31,7 @@ Notice the $\epsilon$-transition from $4b$ to the start state -- at that point, 
 		(q_3) edge[bend left=10]	node {b} (q_4)
 		(q_4) edge[bend left=10]	node {b} (q_5)
 		(q_5) edge[bend left=10]	node {b} (q_6)
-		(q_6) edge[bend left=10]	node {b} (q_7)
-		(q_7) edge[bend left=10]	node {$\epsilon$} (q_0)
+		(q_6) edge[bend left=10]	node {b} (q_0)
 	;
 \end{tikzpicture}
 \done
@@ -74,8 +71,29 @@ Hence the DFA is bounded.
 \done
 \item
 $L_4$ is non regular.
-Suppose $w 
+Suppose for some $n \ge 1$, $w = ab^{n-1}c^n$.
+Since $1 + n - 1 \equiv n$ (mod 3), so $w \in L_4$.
+
+Let $x = \epsilon$, $y = a$, $z = b^{n-1}c^n$.
+Clearly, $|xy| = 1 \le n$ and $y = a \neq \epsilon$.
+
+If $k=2$, then $xy^kz = a^2b^{n-1}c^n$.
+Suppose by way of contradiction that $xy^kz \in L_4$, then
+\begin{align*}
+2+n-1 &\equiv n \text{ (mod 3)} \\
+1 &\equiv 0 \text{ (mod 3)}
+\end{align*}
+This is impossible.
+Therefore, by the pumping lemma $L_4$ is not regular.
 \done
 \item
+$L_5$ is non regular -- basically because it is a set of palindrome.
+Suppose for some $n \ge 2$, $w = (01)^n(10)^n \in L_5$.
+
+Let $x = \epsilon$, $y = 01$, $z = (01)^{n-1}(10)^n$.
+Clearly, $|xy| = 2 \le n$ and $y = 01 \neq \epsilon$.
+
+If $k = 2$, then $xy^kz = (01)^2(01)^{n-1}(10)^n = (01)^{n+1}(10)^n \not\in L_5$.
+Therefore, by the pumping lemma $L_5$ is not a regular language.
 \done
 \end{enumerate}
