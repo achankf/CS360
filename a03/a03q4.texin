@@ -1,9 +1,48 @@
 \begin{enumerate}
 \item
+$L_1$ is regular.
+Notice $L_1$ implies the size of each block of $a$'s is less than or equal to 3, which followed by another block of size greater than 3.
+This means we need 7 states for the status on the blocks and 1 more state for the start state.
+Consider the following $\epsilon$-NFA.
+Notice the $\epsilon$-transition from $4b$ to the start state -- at that point, the condition is satisfied and we can repeat the process for the upcoming characters.
+
+\begin{tikzpicture}[
+    >=stealth,
+    shorten >=1pt,
+		node distance=2.5cm,
+    on grid,
+    auto,
+    state/.append style={minimum size=2em},
+    thick
+]
+   \node[state,initial,accepting] (q_0)   {0a}; 
+   \node[state,accepting](q_1) [right=of q_0] {1a};
+   \node[state,accepting](q_2) [right=of q_1] {2a};
+   \node[state](q_3) [right=of q_2] {3a};
+   \node[state](q_4) [right=of q_3] {1b};
+   \node[state](q_5) [below=of q_4] {2b};
+   \node[state](q_6) [left=of q_5] {3b};
+   \node[state,accepting](q_7) [left=of q_6] {4b};
+    \path[->] 
+    (q_0) edge[bend left=10]  node {a} (q_1)
+    			edge[loop below]  node {b} ()
+		(q_1) edge[bend left=10]	node {a} (q_2)
+    			edge[bend left=10]  node {b} (q_0)
+		(q_2) edge[bend left=10]	node {a} (q_3)
+    			edge[bend right=40]  node {b} (q_0)
+		(q_3) edge[bend left=10]	node {b} (q_4)
+		(q_4) edge[bend left=10]	node {b} (q_5)
+		(q_5) edge[bend left=10]	node {b} (q_6)
+		(q_6) edge[bend left=10]	node {b} (q_7)
+		(q_7) edge[bend left=10]	node {$\epsilon$} (q_0)
+	;
+\end{tikzpicture}
+\done
 \item
 $L_3$ is regular.
-Notice the periodic nature of modulo.
-Consider the following DFA, where each label is $n_a(w) - n_b(w)$ (modulo 5):
+Consider the following DFA, where the label of each state is $n_a(w) - n_b(w)$ (mod 5):
+Notice the periodic nature of modular arithmetic, and the fact that both the remainder and the modulus are constants, namely 2 (mod 5).
+Hence the DFA is bounded.
 
 \begin{tikzpicture}[
     >=stealth,
@@ -32,6 +71,11 @@ Consider the following DFA, where each label is $n_a(w) - n_b(w)$ (modulo 5):
     			edge[bend left=10]  node {b} (q_3)
 	;
 \end{tikzpicture}
+\done
 \item
+$L_4$ is non regular.
+Suppose $w 
+\done
 \item
+\done
 \end{enumerate}
