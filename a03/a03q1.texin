@@ -16,7 +16,7 @@ Let's prove by showing a two sided inclusion.
 Suppose a word $w \in \Sigma^*$ is accepted by $D_3$.
 It means that $D_3$ runs $\hat\delta$ on $w$:
 \begin{align*}
-\hat\delta((q^1_0,q^2_0), w) = (\hat\delta^1(q^1_0, w), \hat\delta^2(q^2_0, w)) \in F^1 \times (Q^2 \setminus F^2) = F
+\hat\delta((q^1_0,q^2_0), w) = (\hat\delta^1(q^1_0, w), \hat\delta^2(q^2_0, w)) \in F = F^1 \times (Q^2 \setminus F^2)
 \end{align*}
 So $D_1$ accepts $w$ too, thus $w \in L(r_1)$.
 On the other hand, $\hat\delta^2(q^2_0, w) \not\in F^2$, so $D_2$ does not accept $w$, thus $w \not\in L(r_2)$.
@@ -51,9 +51,9 @@ I make the following observations about the given regular expression.
 \item
 The ``not" part, $L(b^*ab^*)$, accept any string that contains exactly one $a$, so my regular expression needs to have at least 2 $a$'s.
 \item
-The empty string is in $L(r)$; so $r$ either has no $a$ or at least 2 $a$'s.
+The empty string is in $G$; so $r$ either has no $a$ or at least 2 $a$'s.
 \item 
-Notice $(ab+b)^*+(ba+b)^*$ is the same as having $(ab+ba)$ sandwitched by $b^*$.
+Notice $(ab+b)^*+(ba+b)^*$ is the same as having $(ab+ba)^*$ sandwitched by $b^*$.
 \item
 Once I have 2 $a$'s, I can just pad the remaining with an arbitrary number of $(ab+ba)$'s and $b$'s.
 \end{itemize}
