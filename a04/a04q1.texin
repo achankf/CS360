@@ -9,8 +9,8 @@ w &= x_1x_2x_3x_4x_5 \in L \\
 |x_2x_4| &\ge 1 \\
 w' &= x_1x_2^jx_3x_4^jx_5 \not\in L, \text{ for some } j
 \end{align*}
-Since $w \in L$ and $L$ is Reg-pumpable, so $w'' = x_1(x_2x_3x_4)^kx_5 \in L$.
-Then for all $k$
+Since $w \in L$ and $L$ is Reg-pumpable, so $w'' = x_1(x_2x_3x_4)^kx_5 \in L$, for all $k$.
+Now, add ``nothing" to $w''$.
 \begin{align*}
 w'' = x_1 \underbrace{\big( (x_2x_3x_4)^k \epsilon \epsilon^k \big)}_\text{the new ``$x_2x_3x_4$"} x_5 \in L
 \end{align*}
@@ -20,21 +20,44 @@ Thus, we have a decomposition that passes the CF-PL -- contradiction.
 Therefore, every $L$ that is Reg-pumpable is also CF-pumpable.
 \done
 \item
-Let $L = \{0^n1^n : n \in \mathbb{N} \}$.
-Then for some $n > 2$, let $w = x_1x_2x_3x_4x_5$, where
+Let $L = \{0^n1^n : n \in \mathbb{N} \}$, and $L$ has a context-free grammar of
 \begin{align*}
-x_1 &= 0^{n-1}, x_2 = 0, x_3 = \epsilon, x_4 = 1, x_5 = 1^{n-1} \\
-\implies w &= 0^n1^n \in L, |x_2x_3x_4| = 2 < n, |x_2x_4| = |01| = 2 \ge 1
+G = (\{S\},\{a,b\},S, \{ S \rightarrow \epsilon | aSb \})
 \end{align*}
-Then, $w' = x_1x_2^kx_3x_4^kx_5 = 0^{n-1}0^k1^k1^{n-1} = 0^{n+k-1}1^{n+k-1} \in L$.
-So $L$ is indeed CF-pumpable.
+Since $L$ is context-free, so $L$ is indeed CF-pumpable.
 
-However, if we let $w = xyz \in L$, where $x = \epsilon$, $y = 0^n$, $z = 1^n$, then $w' = xy^kz = 0^{kn}1^n \not\in L$.
+However, if we let $w = xyz \in L$ such that $|xyz| \ge n$, where $x = \epsilon$, $y = 0^n \neq \epsilon$, $z = 1^n$, then $w' = xy^kz = 0^{kn}1^n \not\in L$ when $k = 2$.
 Thus, $L$ is not Reg-pumpable.
 Therefore, the converse of 1a is false.
 \done
 \item
+Given $L$ is CF-pumpable.
+Thus, every word has a decomposition $w = x_1x_2x_3x_4x_5$ such that $w' = x_1x_2^kx_3x_4^kx_5 \in L$ for all $k$.
+Since $L$ is a length langauge, so
+\begin{align*}
+w'' &= x_1x_3(x_2x_4)^kx_5 \in L & \text{because} |w''| = |w'|
+\end{align*}
+
+Finally, $w''' =x_1x_3(x_2x_4)x_5 \in L$ because it has the same length as $w$.
+Together, we have a decomposition for every word $w''' \in L$ that satisfies the Reg-PL.
+Therefore, every CF-pumpable language is also Reg-pumpable.
 \done
 \item
+Given some $n$.
+Let $w = x_1x_2x_3x_4x_5 \in L_{cube}$, such that $|x_2x_3x_4| \le n$ and $|x_2x_4| \ge 1$.
+Then, consider $w' = x_1x_2^kx_3x_4^kx_5$.
+If $k = 2$, then
+\begin{align*}
+|w'| &= |w| + |x_2x_4| \\
+	&\ge n^2 + 1 \\
+	&> n^2 \\
+\text{Also, } |w'| &= |w| + |x_2x_4| \\
+	&\le |w| + |x_2x_3x_4| \\
+	&\le n^2 + n \\
+	&< n^2 + 2n + 1 = (n+1)^2
+\end{align*}
+Together, we have $n^2 < |w'| < (n+1)^2$, so the length is not a squared value.
+Thus, $w' \not\in L_{cube}$.
+Therefore, $L_{cube}$ is not context-free.
 \done
 \end{enumerate}
