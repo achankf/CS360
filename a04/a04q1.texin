@@ -44,7 +44,7 @@ Therefore, every CF-pumpable language is also Reg-pumpable.
 \done
 \item
 Given some $n$.
-Let $w = x_1x_2x_3x_4x_5 \in L_{cube}$, such that $|x_2x_3x_4| \le n$ and $|x_2x_4| \ge 1$.
+Let $w = x_1x_2x_3x_4x_5 \in L_{cube}$, such that $|w| \ge n$, $|x_2x_3x_4| \le n$ and $|x_2x_4| \ge 1$.
 Then, consider $w' = x_1x_2^kx_3x_4^kx_5$.
 If $k = 2$, then
 \begin{align*}
