@@ -1,9 +1,44 @@
 \begin{enumerate}
 \item
+$L_{sq}$ is context-free.
+Consider the grammar $G = ( \{S\}, \{a,b\}, S, P)$, where $P$ consists of the following.
+\begin{align*}
+S &\rightarrow \epsilon & \text{because } 0 \equiv 0 (mod3) \text{ (base case)}
+ \\
+	&\rightarrow aSb & \text{because }  m \equiv n (mod3) \implies m+1 \equiv n+1 (mod3) \text{ (inductive case)}\\
+	&\rightarrow aaaS & \text{because } n+3 \equiv n (mod3) \text{ (inductive case)}\\
+	&\rightarrow Sbbb & \text{because } m+3 \equiv m (mod3) \text{ (inductive case)}
+\end{align*}
+It follows that $L(G) \subseteq L_{sq}$.
+Now prove $L_{sq} \subseteq L(G)$.
+
+There are 3 cases to generate $w \in L_{sq}$ from $G$:
+\begin{itemize}
+\item
+$n = m$: to generate $w$ we can apply $S \rightarrow aSb$ for $n$ times.
+\item
+$n < m$: then $m = n + 3k$ for $k > 0$. So to generate $w$ we can apply $S \rightarrow aSb$ for $n$ times, and then apply $S \rightarrow Sbbb$ for $k$ times.
+\item
+$n > m$: similar to the $n < m$ case except we apply $S \rightarrow aaaS$ for $k$ times.
+\end{itemize}
+Thus, $L_{sq} \subseteq L(G)$.
+Together, $L_{sq} = L(G)$.
+Therefore, $L_{sq}$ is context-free.
 \done
 \item
-\done
-\item
+$L_p$ is not context-free.
+Given some $n$, consider $w = x_1x_2x_3x_4x_5$, and
+\begin{align*}
+x_1 &= x_3 = x_4 = \epsilon \\
+x_2 &= c & \text{ for } c \in \{a,b\}\\
+x_5 &= p - 1 & \text{ for a prime number } p
+\end{align*}
+Clearly, $|w| = p$, so $w \in L$.
+Also, $|x_2| = 1$, so $|x_2x_4| \ge 1$ and $|x_2x_3x_4| = 1 \le n$.
+If $k = p+1$, then $w' = x_1x_2^kx_3x_4^kx_5 = \epsilon c^{p+1} \epsilon \epsilon^k x_5$, for $c \in \{a,b\}$.
+However, $|w'| = p + 1 + p - 1 = 2p$, which is no longer prime, so $w' \not\in L_p$.
+
+Therefore, $L_p$ is not context-free.
 \done
 \item
 \done

@@ -32,7 +32,7 @@ Therefore, the converse of 1a is false.
 \done
 \item
 Given $L$ is CF-pumpable.
-Thus, every word has a decomposition $w = x_1x_2x_3x_4x_5$ such that $w' = x_1x_2^kx_3x_4^kx_5 \in L$ for all $k$.
+Thus, every word has a decomposition $w = x_1x_2x_3x_4x_5 \in L$ such that $w' = x_1x_2^kx_3x_4^kx_5 \in L$ for all $k$.
 Since $L$ is a length langauge, so
 \begin{align*}
 w'' &= x_1x_3(x_2x_4)^kx_5 \in L & \text{because} |w''| = |w'|
