@@ -1,5 +1,19 @@
 \begin{enumerate}
 \item
+First, consider the bijective function $f: P \rightarrow \{ \frac{w}{awb}, \frac{w_1,w_2}{aw_1w_2b} \}$ as the following:
+\begin{align*}
+f(S \rightarrow aSb) &= \frac{w}{awb} \\
+f(S \rightarrow aSSb) &= \frac{w}{} \\
+\end{align*}
+
+Let $J = I(\{a,b\}, \{ \frac{w}{awb}, \frac{w_1,w_2}{aw_1w_2b} \})$.
+Prove that $L(G) \subseteq J$.
+
+{\bf Base Case}
+$S \rightarrow ab$ implies $ab \in L(G)$, and also $ab \in J$.
+
+{\bf Inductive Step}
+Suppose 
 \done
 \item
 \done

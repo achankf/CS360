@@ -12,12 +12,12 @@ S &\rightarrow \epsilon & \text{because } 0 \equiv 0 (mod3) \text{ (base case)}
 It follows from the above reasoning that every words in $G$ is in $L_{sq}$, so $L(G) \subseteq L_{sq}$.
 Now prove $L_{sq} \subseteq L(G)$.
 
-There are 3 cases to consider for generating $w \in L_{sq}$ from $G$:
+There are 3 cases to consider for generating $w \in L_{sq}$ from $G$ (starting from $S$):
 \begin{itemize}
 \item
-$n = m$: to generate $w$ we can apply $S \rightarrow aSb$ for $n$ times.
+$n = m$: to generate $w$ we can apply $S \rightarrow aSb$ for $n$ times; then kill $S$ with $\epsilon$.
 \item
-$n < m$: then $m = n + 3k$ for $k > 0$. So to generate $w$ we can apply $S \rightarrow aSb$ for $n$ times, and then apply $S \rightarrow Sbbb$ for $k$ times.
+$n < m$: then $m = n + 3k$ for $k > 0$. So to generate $w$ we can apply $S \rightarrow aSb$ for $n$ times, and then apply $S \rightarrow Sbbb$ for $k$ times; then kill $S$ with $\epsilon$.
 \item
 $n > m$: similar to the $n < m$ case except we apply $S \rightarrow aaaS$ for $k$ times.
 \end{itemize}
@@ -28,17 +28,27 @@ Therefore, $L_{sq}$ is context-free.
 \done
 \item
 $L_p$ is not context-free.
-Given some prime number $p$ (instead of ``$n$"), consider $w = x_1x_2x_3x_4x_5$, and
-\begin{align*}
-x_1 &= x_3 = x_4 = \epsilon \\
-x_2 &= c & \text{ for } c \in \{a,b\}\\
-x_5 &= p - 1 & \text{ for a prime number } p
-\end{align*}
-Clearly, $|w| = p$, so $w \in L$.
-Also, $|x_2| = 1$, so $|x_2x_4| \ge 1$ and $|x_2x_3x_4| = 1 \le n$.
-If $k = p+1$, then $w' = x_1x_2^kx_3x_4^kx_5 = \epsilon c^{p+1} \epsilon \epsilon^k x_5$, for $c \in \{a,b\}$.
-However, $|w'| = p + 1 + p - 1 = 2p$, which is no longer prime, so $w' \not\in L_p$.
+Given some $n$ and prime number $p$ such that $p \ge n + 2$. consider $w = \{a,b\}^p \in L_p$.
 
+Then let each substring of the decomposition $w = x_1x_2x_3x_4x_5$ to have the following length.
+\begin{align*}
+|x_1| &= r \\
+|x_2| &= s \\
+|x_3| &= t \\
+|x_4| &= u \\
+|x_5| &= v \\
+\end{align*}
+such that $r+s+t+u+v = p$.
+So, $|x_2x_4| \ge 1$ and $|x_2x_3x_4| \le n$.
+If $k = r+t+v$, then $w\ = x_1x_2^kx_3x_4^kx_5$ has a length of
+\begin{align*}
+|w'| &= r + s (r+t+v) + t + u (r+t+v) + v \\
+	&= (s+u)(r+t+v) + (r+t+v)\\
+	&= \underbrace{(s+u+1)}_\text{$\ge 2$ since $s+u \ge 1$;}
+		\times
+			\underbrace{(r+t+v)}_\text{$\ge 2$ since $p \ge n + 2$ and $s+t+u \ge n$}
+\end{align*}
+So $w'$ is no longer a prime number.  
 Therefore, $L_p$ is not context-free.
 \done
 \item

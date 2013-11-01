@@ -6,5 +6,8 @@
 \item
 \done
 \item
+Consider the language $L = \{a^nb^nc^n : n \in \mathbb{N}\}$.
+As shown by the professor, it is not context-free.
+However, $L$'s corresponding $F_0(L) = \{0^{3n} = (000)^n : n \in \mathbb{N}\}$, which is trivially equivalent to the regular expression $(000)^*$.
 \done
 \end{enumerate}
