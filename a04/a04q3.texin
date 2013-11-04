@@ -87,6 +87,31 @@ Thus,
 Therefore, by structural induction, for every $w \in L(G)$, $\#_a(w) = \#_b(w)$.
 \done
 \item
+Again, let's do structural induction.
+
+{\bf Base Case}
+Clearly, the only proper prefix in $ab$ is $a$, so it holds trivially.
+
+{\bf Inductive Step}
+Suppose $w_1, w_2 \in L(G)$.
+There are 2 cases, one for each operation:
+\begin{itemize}
+\item
+$\frac{w_1}{aw_1b}$, so the result is $w = aw_1b$.
+Since we want a proper prefix, so any possible $w'$ will get rid of the last $b$
+\begin{align*}
+\#_a(w') &\le 1 + \#_a(w_1) \\
+\#_b(w') &\le \#_b(w_1) \\
+\implies \#_a(w') &> \#_b(w') & \text{since from the previous question, } \#_a(w_1) &= \#_b(w_1)
+\end{align*}
+\item
+$\frac{w_1,w_2}{aw_1w_2b}$, so $w = aw_1w_2b$.
+So in all proper prefix, the last $b$ is gone.
+Also, from the previous question, we have $w_1$ and $w_2$ each having the same number of $a$'s and $b$'s.
+Finally, any $w'$ will take the first $a$.
+Thus, $\#_a(w') > \#_b(w')$.
+\end{itemize}
+Therefore, by structural induction, the claim holds.
 \done
 \item
 \done
