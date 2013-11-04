@@ -114,5 +114,11 @@ Thus, $\#_a(w') > \#_b(w')$.
 Therefore, by structural induction, the claim holds.
 \done
 \item
+$L(G)$ is not regular.
+Suppose by way of contradiction that is it regular.
+Let $n$ be the pumping length.
+By applying the rule $S \rightarrow aSb$ and at the end kill $S$ with $ab$, we have $w = a^nb^n$, which is in $L(G)$.
+However, in question 1b it is used $a^nb^n$ as a counter-example to show that it fails the Reg-pumping lemma.
+Since a string in $L$ that depends on $n$ cannot be Reg-pumped; therefore, $L(G)$ is not regular.
 \done
 \end{enumerate}

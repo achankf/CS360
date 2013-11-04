@@ -28,7 +28,7 @@ Therefore, $L_{sq}$ is context-free.
 \done
 \item
 $L_p$ is not context-free.
-Given some $n$ and prime number $p$ such that $p \ge n + 2$. consider $w = \{a,b\}^p \in L_p$.
+Given some $n$ as the pumping length and prime number $p$ such that $p \ge n + 2$. consider $w = \{a,b\}^p \in L_p$.
 
 Then let each substring of the decomposition $w = x_1x_2x_3x_4x_5 = \{a,b\}^p$ to have the following length.
 \begin{align*}

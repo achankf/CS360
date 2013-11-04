@@ -75,7 +75,7 @@ The existence of a context-free grammar implies $L(G_0)$ is context-free, equiva
 \item
 Consider the language $L = \{a^nb^nc^n : n \in \mathbb{N}\}$ (just in case, define $\mathbb{N} = \{0,1,2,\cdots\}$).
 As shown by the professor, it is not context-free.
-However, $L$'s corresponding $F_0(L) = \{0^{3n} = (000)^n : n \in \mathbb{N}\}$, which is trivially equivalent to the language of the regular expression $(000)^*$.
+However, $L$'s corresponding $F_0(L) = \{0^{3n} = (000)^n : n \in \mathbb{N}\}$, which is trivially equivalent to the regular expression $(000)^*$.
 So $F_0(L)$ is regular, as required.
 \done
 \end{enumerate}
