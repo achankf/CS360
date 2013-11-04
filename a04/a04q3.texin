@@ -57,6 +57,34 @@ Therefore, by induction the claim holds.
 Together we have $L(G) = I(\{ab\}, \{ \frac{w}{awb}, \frac{w_1,w_2}{aw_1w_2b} \})$, as required.
 \done
 \item
+Let's prove by structural induction on $I(\{ab\},\{ \frac{w}{awb}, \frac{w_1,w_2}{aw_1w_2b} \})$.
+
+{\bf Base Case}
+Clearly, $ab$ has 1 $a$ and 1 $b$, so $\#_a(ab) = \#_b(ab)$.
+
+{\bf Inductive Step}
+Suppose $w_1, w_2 \in L(G)$.
+By the inductive hypothesis, $\#_a(w_1) = \#_b(w_1)$ and $\#_a(w_2) = \#_b(w_2)$.
+There are 2 cases, one for each operation:
+\begin{itemize}
+\item
+$\frac{w_1}{aw_1b}$, so the result is $w = aw_1b$.
+Thus,
+\begin{align*}
+\#_a(w) &= 1 + \#_a(w_1) \\
+\#_b(w) &= 1 + \#_b(w_1) \\
+\implies \#_a(w) &= \#_b(w)
+\end{align*}
+\item
+$\frac{w_1,w_2}{aw_1w_2b}$, so the result is $w = aw_1w_2b$.
+Thus,
+\begin{align*}
+\#_a(w) &= 1 + \#_a(w_1) + \#_a(w_2) \\
+\#_b(w) &= 1 + \#_b(w_1) + \#_b(w_2) \\
+\implies \#_a(w) &= \#_b(w)
+\end{align*}
+\end{itemize}
+Therefore, by structural induction, for every $w \in L(G)$, $\#_a(w) = \#_b(w)$.
 \done
 \item
 \done
