@@ -9,10 +9,10 @@ w &= x_1x_2x_3x_4x_5 \in L \\
 |x_2x_4| &\ge 1 \\
 w' &= x_1x_2^jx_3x_4^jx_5 \not\in L, \text{ for some } j
 \end{align*}
-Since $w \in L$ and $L$ is Reg-pumpable, so $w'' = x_1(x_2x_3x_4)^kx_5 \in L$, for all $k$.
+Since $w \in L$ and $L$ is Reg-pumpable, so there exists a decomposition $w'' = x_1(x_2x_3x_4)^kx_5 \in L$, for all $k$.
 Now, add ``nothing" to $w''$.
 \begin{align*}
-w'' = x_1 \underbrace{\big( (x_2x_3x_4)^k \epsilon \epsilon^k \big)}_\text{the new ``$x_2x_3x_4$"} x_5 \in L
+w'' = x_1 \underbrace{\big( (x_2x_3x_4)^k \epsilon \epsilon^k \big)}_\text{the new ``$x_2^kx_3x_4^k$"} x_5 \in L
 \end{align*}
 
 Notice the CF-pumping conditions remain valid.
@@ -20,13 +20,20 @@ Thus, we have a decomposition that passes the CF-PL -- contradiction.
 Therefore, every $L$ that is Reg-pumpable is also CF-pumpable.
 \done
 \item
-Let $L = \{0^n1^n : n \in \mathbb{N} \}$, and $L$ has a context-free grammar of
+Let $L = \{a^nb^n : n \in \mathbb{N} \}$, which we know it has the following context-free grammar.
 \begin{align*}
 G = (\{S\},\{a,b\},S, \{ S \rightarrow \epsilon | aSb \})
 \end{align*}
-Since $L$ is context-free, so $L$ is indeed CF-pumpable.
+So $L$ is context-free and is CF-pumpable.
+Now show that $L$ is not Reg-pumpable.
 
-However, if we let $w = xyz \in L$ such that $|xyz| \ge n$, where $x = \epsilon$, $y = 0^n \neq \epsilon$, $z = 1^n$, then $w' = xy^kz = 0^{kn}1^n \not\in L$ when $k = 2$.
+Using the pumping lemma on $L$, assuming by way of contradiction that it is regular.
+Given $n$, let $w = a^nb^n \in L$.
+Then let $w' = xyz$ be all decomposition of $w$, such that $x = a^i$, $y = a^j$ (for $j \ge 1$), $z = a^{n-i-j}b^n$.
+
+Notice that $|xy| \ge n$, and $y \neq \epsilon$.
+
+If $k=2$, then $w' = xy^kz = a^{i+j+n-i-j}b^n = a^{n+j}b^n$, which has more $a$'s than $b$'s, so $w' \not\in L$.
 Thus, $L$ is not Reg-pumpable.
 Therefore, the converse of 1a is false.
 \done
@@ -43,20 +50,30 @@ Together, we have a decomposition for every word $w''' \in L$ that satisfies the
 Therefore, every CF-pumpable language is also Reg-pumpable.
 \done
 \item
+Suppose by way of contradiction that $L_{cube}$ is context-free.
 Given some $n$.
-Let $w = x_1x_2x_3x_4x_5 \in L_{cube}$, such that $|w| \ge n$, $|x_2x_3x_4| \le n$ and $|x_2x_4| \ge 1$.
-Then, consider $w' = x_1x_2^kx_3x_4^kx_5$.
-If $k = 2$, then
+Let $w = a^{n^2}$, so $w \in L_{cube}$.
+Let any decomposition $w = x_1x_2x_3x_4x_5$, such that
 \begin{align*}
-|w'| &= |w| + |x_2x_4| \\
-	&\ge n^2 + 1 \\
-	&> n^2 \\
-\text{Also, } |w'| &= |w| + |x_2x_4| \\
-	&\le |w| + |x_2x_3x_4| \\
-	&\le n^2 + n \\
+x_1 &= a^s \\
+x_2 &= a^t \\
+x_3 &= a^{u} \\
+x_4 &= a^v \\
+x_5 &= a^{n^2 - s - t - u - v} 
+\end{align*}
+such that $|x_2x_3x_4| \le n$ and $|x_2x_4| \ge 1$.
+
+Then, consider $w' = x_1x_2^kx_3x_4^kx_5$, for $k = 2$.
+\begin{align*}
+|w'| &= |x_1x_2^kx_3x_4^kx_5| \\
+	&= s + 2t + u - 2v + n^2 - s - t - u - v \\
+	&= n^2 + t + v \\
+\implies |w'| &> n^2 & \text{since } |x_2x_4| = t+v \ge 1\\
+\implies |w'| &= n^2 + t + u \\
+	&\le n^2 + n & \text{since } |x_2x_3x_4| = t + u + v \ge n\\
 	&< n^2 + 2n + 1 = (n+1)^2
 \end{align*}
-Together, we have $n^2 < |w'| < (n+1)^2$, so the length is not a squared value.
+So, the number of $a$'s is in between $n^2$ and $(n+1)^2$, which is not a squared value.
 Thus, $w' \not\in L_{cube}$.
 Therefore, $L_{cube}$ is not context-free.
 \done
