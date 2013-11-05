@@ -8,7 +8,7 @@ $L(G) \subseteq J$
 \begin{proof}
 Suppose $w \in L(G)$, so $w$ has a parse tree $T$.
 The idea is to ``compressed" the parse tree for $w$ in a bottom-up fashion, so that all variables in the tree are replaced by terminals along the way -- eventually the root will contain $w$.
-Notice that $ab$ must be in the very bottom of $T$, otherwise that level (say, $i$-th) has at least one $S$, and $T$ has one more level ($(i+1)$-th).
+Notice that $ab$ must be in the very bottom of $T$, otherwise it has at least one $S$ siblings, and $T$ has one more level ($(i+1)$-th).
 Therefore, $ab$ must be the possible starting nodes of the new graph.
 
 {\bf Base Case}
@@ -43,7 +43,7 @@ If $w = ab$, which is in $L(G)$, so we are okay.
 {\bf Inductive Step}
 Suppose the generating sequence has generated $y_j, y_k \in J$ up to the ($i-1$)-th step.
 By induction hypothesis, they are still valid words in $L(G)$.
-For the $i$-th sequence, we have to consider 2 cases.
+For the $i$-th sequence, we have to consider 3 cases.
 \begin{itemize}
 \item
 $ab$ (using elements in the base set): it is clearly a word in $L(G)$.
@@ -109,6 +109,11 @@ $\frac{w_1,w_2}{aw_1w_2b}$, so $w = aw_1w_2b$.
 So in all proper prefix, the last $b$ is gone.
 Also, from the previous question, we have $w_1$ and $w_2$ each having the same number of $a$'s and $b$'s.
 Finally, any $w'$ will take the first $a$.
+\begin{align*}
+\#_a(w') &\le 1 + \#_a(w_1) + \#_a(w_2) \\
+\#_b(w') &\le \#_b(w_1) + \#_b(w_2) \\
+\implies \#_a(w') &> \#_b(w') & \text{since from the previous question, } \#_a(w_i) &= \#_b(w_i)
+\end{align*}
 Thus, $\#_a(w') > \#_b(w')$.
 \end{itemize}
 Therefore, by structural induction, the claim holds.
@@ -118,7 +123,7 @@ $L(G)$ is not regular.
 Suppose by way of contradiction that is it regular.
 Let $n$ be the pumping length.
 By applying the rule $S \rightarrow aSb$ and at the end kill $S$ with $ab$, we have $w = a^nb^n$, which is in $L(G)$.
-However, in question 1b it is used $a^nb^n$ as a counter-example to show that it fails the Reg-pumping lemma.
+However, in question 1b $a^nb^n$ is used as a counter-example to show that it fails the Reg-pumping lemma.
 Since a string in $L$ that depends on $n$ cannot be Reg-pumped; therefore, $L(G)$ is not regular.
 \done
 \end{enumerate}

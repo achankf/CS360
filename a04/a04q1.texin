@@ -2,9 +2,10 @@
 \item
 Given $L$ is Reg-pumpable.
 Suppose by way of contradiction $L$ is not CF-pumpable.
-Then there exists $j$, such that 
+Then there exists $n$ as the pumping length, such that 
 \begin{align*}
 w &= x_1x_2x_3x_4x_5 \in L \\
+|w| &\ge n \\
 |x_2x_3x_4| &\le n \\
 |x_2x_4| &\ge 1 \\
 w' &= x_1x_2^jx_3x_4^jx_5 \not\in L, \text{ for some } j
@@ -28,7 +29,7 @@ So $L$ is context-free and is CF-pumpable.
 Now show that $L$ is not Reg-pumpable.
 
 Using the pumping lemma on $L$, assuming by way of contradiction that it is regular.
-Given some $n$ as the pumping length, let $w = a^nb^n \in L$.
+Given some $n$ as the pumping length, let $w = a^nb^n \in L$, so $|w| \ge n$.
 Then let $w' = xyz$ be all decomposition of $w$, such that $x = a^i$, $y = a^j$ (for $j \ge 1$), $z = a^{n-i-j}b^n$.
 
 Notice that $|xy| \ge n$, and $y \neq \epsilon$.
@@ -39,20 +40,21 @@ Therefore, the converse of 1a is false.
 \done
 \item
 Given $L$ is CF-pumpable.
-Thus, every word has a decomposition $w = x_1x_2x_3x_4x_5 \in L$ such that $w' = x_1x_2^kx_3x_4^kx_5 \in L$ for all $k$.
+Let $n$ be the pumping length.
+Thus, every word of at least length $n$ has a decomposition $w = x_1x_2x_3x_4x_5 \in L$, such that $w' = x_1x_2^kx_3x_4^kx_5 \in L$ for all $k$.
 Since $L$ is a length langauge, so
 \begin{align*}
 w'' &= x_1x_3(x_2x_4)^kx_5 \in L & \text{because} |w''| = |w'|
 \end{align*}
 
 Finally, $w''' =x_1x_3(x_2x_4)x_5 \in L$ because it has the same length as $w$.
-Together, we have a decomposition for every word $w''' \in L$ that satisfies the Reg-PL.
+Together, we have a decomposition for every word in $L$ of at least length $n$ that satisfies the Reg-PL.
 Therefore, every CF-pumpable language is also Reg-pumpable.
 \done
 \item
 Suppose by way of contradiction that $L_{cube}$ is context-free.
 Given some $n$ as the pumping length.
-Let $w = a^{n^2}$, so $w \in L_{cube}$.
+Let $w = a^{n^2}$, so $w \in L_{cube}$ and $|w| \ge n$.
 Let any decomposition $w = x_1x_2x_3x_4x_5$, such that
 \begin{align*}
 x_1 &= a^s \\
@@ -70,7 +72,7 @@ Then, consider $w' = x_1x_2^kx_3x_4^kx_5$, for $k = 2$.
 	&= n^2 + t + v \\
 \implies |w'| &> n^2 & \text{since } |x_2x_4| = t+v \ge 1\\
 \implies |w'| &= n^2 + t + u \\
-	&\le n^2 + n & \text{since } |x_2x_3x_4| = t + u + v \ge n\\
+	&\le n^2 + n & \text{since } |x_2x_4| \le |x_2x_3x_4| \le n\\
 	&< n^2 + 2n + 1 = (n+1)^2
 \end{align*}
 So, the number of $a$'s is in between $n^2$ and $(n+1)^2$, which is not a squared value.

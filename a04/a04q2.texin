@@ -39,7 +39,9 @@ Then let each substring of the decomposition $w = x_1x_2x_3x_4x_5 = \{a,b\}^p$ t
 |x_5| &= v
 \end{align*}
 such that $r+s+t+u+v = p$.
-Since the first prime number is 2, this means $|x_2x_4| \ge 1$ and $|x_2x_3x_4| \le n$.
+We ignore the case for the first prime number is 2, since that means $n = 0$ so $|x_2x_4|$ is never greater than 1 (if for all $p > 2$ $L_p$ is context-free, then we can just do a union with the regular language where all word have even length).
+So we start from 3.
+This means $|x_2x_4| \ge 1$ and $|x_2x_3x_4| \le n$.
 If $k = r+t+v$, then $w\ = x_1x_2^kx_3x_4^kx_5$ has a length of
 \begin{align*}
 |w'| &= r + s (r+t+v) + t + u (r+t+v) + v \\
