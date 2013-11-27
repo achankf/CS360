@@ -1,0 +1,163 @@
+Given a 2SPDA $M = (Q,\Sigma,\Gamma,q_0, Z_0, \delta, F)$.
+Let the Turing Machine be
+\begin{align*}
+M^* = \{Q \cup Q_t \cup \{q_a,q_r\}, \Sigma, \Gamma \cup \{\Delta\}, q_{preprocess}, q_a, q_r, \delta' \}
+\end{align*}
+Such that $q_{preprocess} \in Q_t$ and $Q_t$ will be the new states discussed below, along with some modifications to $\delta$ (from 2SPDA).
+
+Notice we can simulate 2 stacks in the tape by placing them side-by-side.
+Let stack 1 be on the left side, and stack 2 be on the right side.
+
+\begin{tabular}{|lll|}
+\hline
+Head & & \\
+$\Delta\cdots\Delta\cdots\Delta\cdots$ & & \\ \hline
+\end{tabular}
+
+{\bf Simulate the bottom and top of stacks}
+
+First, $M^*$ starts with the state $q_{preprocess}$, and all it does is to push the stack bottom symbols $Z_0Z_0$ into the \emph{second} position of the tape.
+Then move the head back to $Z_0$, and then $\epsilon$-transition to $q_0$.
+
+\begin{tabular}{|lll|}
+\hline
+& & Head \\
+& $\Delta Z_0Z_0$ & $\Delta\cdots$\\
+\hline
+\end{tabular}
+$\rightarrow$
+\begin{tabular}{|lll|}
+\hline
+& Head &\\
+$\Delta$ & $Z_0$ & $Z_0\Delta\cdots$\\
+\hline
+\end{tabular}
+
+Notice we can identify stack 1 and 2 based on checking which side $\Delta$ is in -- if $\Delta$ is on the left of $Z_0$, then we know that $Z_0$ belongs to stack 1, and vice versa.
+This check covers the bottom of stack 1, and the top of stack 2.
+
+Now, to find the top of stack 1 and the bottom of stack 2, $M^*$ can first transition to its bottom $Z_0$, and then keep looking to the left to seek for the next $Z_0$.
+
+\begin{tabular}{|lll|}
+\hline
+& Head &  \\
+$\Delta$ & $Z_0$ & $xyzZ_0w_2\Delta\cdots$ \\
+\hline
+\end{tabular}
+$\rightarrow$
+\begin{tabular}{|lll|}
+\hline
+& Head & \\
+$\Delta Z_0xyz$ & $Z_0$ & $w_2\Delta\cdots$\\
+\hline
+\end{tabular}
+or
+\begin{tabular}{|lll|}
+\hline
+& Head & \\
+$\Delta Z_0xy$ & $z$ & $Z_0w_2\Delta\cdots$\\
+\hline
+\end{tabular}
+
+Therefore, $M^*$ is now setup for the simulation of 2 stacks, because we have the boundaries of the stacks.
+
+{\bf The changing of the stack contents}
+
+For each state in 2SPDA, $M$, that writes to the stacks, we need to add additional states to do memory reallocation.
+Assuming we are at state $q \in Q$, now transition to a new state $q_{search}$.
+We have the following cases:
+\begin{itemize}
+\item
+If $M$ is trying to write to \emph{stack 2 only}, then search for the top of stack 2.
+Then transition to the state $q_{write2}$ and write the input symbol on the tape.
+Finally, go to the next state of $q$ as usual.
+
+\begin{tabular}{|lll|}
+\hline
+& & Head \\
+& $\Delta Z_0w_1Z_0w_2$ & $\Delta\cdots$\\
+\hline
+\end{tabular}
+$\rightarrow$
+\begin{tabular}{|lll|}
+\hline
+& & Head \\
+& $\Delta Z_0w_1Z_0w_2$ & $x\Delta\cdots$\\
+\hline
+\end{tabular}
+
+Similarly for delete on stack 2 except we replace the tape on that position with $\Delta$.
+
+\begin{tabular}{|lll|}
+\hline
+& & Head \\
+& $\Delta Z_0w_1Z_0w_2$ & $x\Delta\cdots$\\
+\hline
+\end{tabular}
+$\rightarrow$
+\begin{tabular}{|lll|}
+\hline
+& & Head \\
+& $\Delta Z_0w_1Z_0w_2$ & $\Delta\Delta\cdots$\\
+\hline
+\end{tabular}
+\item
+If $M$ is trying to write to \emph{both stack 1 and 2}.
+
+Let's define the operation {\tt copy}(direction) as follows:
+\begin{itemize}
+\item
+$M^*$ automatically transition to a new state $q_{copy}$.
+\item
+Create new states $q_s$ for each $s \in \Sigma$ (finite).
+\item
+If the direction is is left, then move the head to the left and take that symbol $s$ and transition to $q_s$.
+Then, move the head back to the right, and then write that symbol (okay because we have ``stored" it on the state $q_s$).
+Then go to back to the original state.
+\end{itemize}
+Notice here we are creating new states for each state that needs copying, so we will create $\ge |\Sigma|$ states, but remain finite because the number of states in $M$ is finite and $\Sigma$ is also finite.
+
+Then following similar steps as writing to stack 2, except $M^*$ will transition to a new state $q_{search1}$.
+At this point, $M^*$ looks for the top of stack 2, and then transition to a new state $q_{make\_space}$.
+
+In $q_{make\_space}$, $M^*$ moves the head to the right, and then copies from the left (think of shifting a character beyond the end).
+Then, repeat util the head reaches the top of stack 1.
+Then replaces the duplicate $Z_0$ with the input character for stack 1.
+Finally, go to the next state of $q$.
+
+\begin{tabular}{|lll|}
+\hline
+& & Head \\
+& $\Delta Z_0w_1Z_0w_2$ & $x\Delta\cdots$\\
+\hline
+\end{tabular}
+$\rightarrow$
+\begin{tabular}{|lll|}
+\hline
+& Head & (extra $Z_0$)\\
+$\Delta Z_0w_1$ & $Z_0$ & $Z_0w_2x\Delta\cdots$\\
+\hline
+\end{tabular}
+$\rightarrow$
+\begin{tabular}{|lll|}
+\hline
+& Head & \\
+$\Delta Z_0w_1$ & $y$ & $Z_0w_2x\Delta\cdots$\\
+\hline
+\end{tabular}
+
+Similarly for delete, in which $M^*$ deletes the symbol for stack 2, and then process stack 1.
+Then, $M^*$ looks for the top of stack 1, and then copies the character on the right side one-by-one until the top of stack 2 is reach.
+Then delete the extra symbol on stack 2.
+\item
+If the $M^*$ wants to update \emph{stack 1 only}, then follow the same procedure for both stack 1 and 2, with the input for stack 2 being empty instead.
+\item
+If the input has multiple symbols, then just break the them into a collection of symbols and then following the steps above for each symbol, and add the new states for \emph{each} of the symbol.
+The number of symbol remains finite because the input symbols have to be finite, and we only add a fixed number of symbols for each updating operation.
+\end{itemize}
+{\bf Accepting and Rejecting states}
+
+For each state $q \in F$, we make an $\epsilon$-transition to $q_a$, the accepting state of $M^*$.
+Then for any other states, we make an $\epsilon$-transition to $q_r$, the rejecting states of $M^*$.
+
+Therefore, the Turing Machine $M^*$ can simulate the 2SPDA, $M$, so $L(M) \subseteq L(M^*)$.

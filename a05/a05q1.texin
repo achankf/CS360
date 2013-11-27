@@ -1,0 +1,6 @@
+{\bf Direction: 2SPDA is not more powerful than Turing Machine}
+\input{a05q1_2spda_tm.texin}
+
+{\bf Direction: Turing Machine is not more powerful than 2SPDA}
+\input{a05q1_tm_2spda.texin}
+\done
