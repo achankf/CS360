@@ -22,7 +22,8 @@ $q_{back}$ is the state for moving the head back to the first occurrence of $a$.
 If found, then goto $q_1$; otherwise goto $q_{last}$.
 \item
 $q_{next\_b}$ is the state for finding the the next available $b$.
-If found, then goto $q_2$; otherwise goto $q_{free}$.
+If found, then goto $q_2$; otherwise if the tape has $B$, then goto $q_{free}$.
+If the tape has neither $B$ or $b$, then reject because $M$ is trying to divide by 0.
 \item
 $q_{free}$ is the state that turns all $B$'s into $b$'s.
 Then goto $q_{next\_b}$.

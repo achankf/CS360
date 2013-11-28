@@ -1,5 +1,28 @@
 \begin{enumerate}
 \item
+Let {\tt INFINITE} be the given decision problem.
+Suppose the input to the Halting problem is $(M,w)$.
+Let's define the function
+\begin{align*}
+f(M, x) &= M
+\end{align*}
+So we can create the reduction of the Halting problem to this problem by running {\tt INFINITE}$(f(M,w))$, which accepts if and only if $M$ halts on infinitely many inputs; and rejects if and only if $M$ does not halt on infinitely many inputs.
 
-Let's define the 
+Now, simulate an instance for the input $(H,w)$, where $H$ is a Turing Machine that solves the Halting Problem, and $w \in \Sigma^*$.
+Then {\tt INFINITE}$(f(H,w))$ will reject the input, because $H$ does not halt regardless of how many input it has.
+So {\tt INFINITE} has just decided the Halting problem.
+However, the Halting problem is undecidable; hence a contradiction.
+Therefore, {\tt INFINITE} is undecidable.
+\done
+\item
+Let {\tt SAME} be the given decision problem, and $H$ be the halting problem.
+Let's define the function
+\begin{align*}
+f(M, x) &= (M,M)
+\end{align*}
+So we can create the reduction of the Halting problem to this problem by running {\tt SAME}$(f(M,w))$, which accepts if and only if $M$ halts on every input, and reject if and only if $M$ does not halt on every input.
+
+So if we simulate an instance with $(H,w)$, then {\tt SAME}$(f(H,w))$ will reject because the $H$ does not halt on every input.
+Thus, {\tt SAME} solves the halting problem.
+So, contradiction; {\tt SAME} is undecidable.
 \end{enumerate}

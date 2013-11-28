@@ -25,4 +25,7 @@ Suppose $L$ is regular.
 Recall a theorem that a language is regular if and only if its complement is regular.
 However, $\Sigma^* \setminus L = \{b^p : p $ is a prime number$\}$, which not a regular language.
 Therefore, $L$ is not regular.
+Consequently, no DFA can simulate the part $b^k$, so this case is not regular.
 \end{itemize}
+Together, we have $L_2$ is not regular.
+\done
