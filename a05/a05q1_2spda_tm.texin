@@ -33,6 +33,8 @@ $\Delta$ & $Z_0$ & $Z_0\Delta\cdots$\\
 \hline
 \end{tabular}
 
+{\bf Identify which stack}
+
 Notice we can identify stack 1 and 2 based on checking which side $\Delta$ is in -- if $\Delta$ is on the left of $Z_0$, then we know that $Z_0$ belongs to stack 1, and vice versa.
 This check covers the bottom of stack 1, and the top of stack 2.
 
@@ -61,7 +63,7 @@ $\Delta Z_0xy$ & $z$ & $Z_0w_2\Delta\cdots$\\
 
 Therefore, $M^*$ is now setup for the simulation of 2 stacks, because we have the boundaries of the stacks.
 
-{\bf The changing of the stack contents}
+{\bf Changing the stack contents}
 
 For each state in 2SPDA, $M$, that writes to the stacks, we need to add additional states to do memory reallocation.
 Assuming we are at state $q \in Q$, now transition to a new state $q_{search}$.

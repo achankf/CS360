@@ -1,0 +1,18 @@
+$q_0$ is the state of reading one $a$ and turing it into $A$.
+\begin{itemize}
+\item
+Reading $a$, then change it it $A$, and goto $q_1$
+\item
+Reading $\Delta$, then reject because $\frac{n}{k}$ is undefined for $k = 0$.
+\item
+Reading $b$, then move to $q_1$.
+\item
+Reading $B$, then move to $q_{check}$.
+\end{itemize}
+
+$q_1$ is the state of reading $b$'s and turning them into $B$'s.
+\begin{itemize}
+\item
+Reading $a$, then reject because $M$ has matched $a^*ba \not\in L_1$.
+\end{itemize}
+\done

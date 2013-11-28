@@ -1,0 +1,16 @@
+Suppose $L_1$ is regular.
+Let $p > 1000$ be the pumping length.
+Let $w = a^{10(p)}b^{p}$, which is in $L_1$ because $n/k = 10 \in \mathbb{Z}$, and $|w| \ge p$.
+Clearly, $w$ is longer than $p$.
+Then, consider the splitting of $w$ into $xyz$.
+Since $|y| \ge 1$ and $|xy| \le p$, so $y$ can either consists of
+\begin{itemize}
+\item
+$xy = b^i$ is impossible by design, since the number of $b$'s is strictly less than $p$.
+\item
+$y = a^i$, where $0 < i \le p$; in this case we have $xy^0z = a^jb^p$, such that $j < p$, which is not in $L_1$.
+\item
+$y$ has a mixture of $a^ib^j$, where $0 < i+j \le p < p$; in this case we have $xy^2z = a^s(a^ib^j)(a^ib^j)b^t$, such that every exponent is $\ge 1$, so the word is no longer in the form $a^*b^*$, so clearly $wy^2z \not\in L_1$.
+\end{itemize}
+So none of the cases is pumpable, which is a contradiction; so $L_1$ is not regular.
+\done

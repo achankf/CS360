@@ -1,0 +1,65 @@
+$L_1$ is not context-free.
+Let $p > 1000$ be the pumping length, and let $w = a^{10p}b^{p} \in L_1$, because $10p/p = 10 \in \mathbb{Z}$, and $|w| \ge p$.
+
+Then, consider the following cases for decomposition $w = x_1x_2x_3x_4x_5$:
+\begin{itemize}
+\item
+\emph{$x^2x^3x^4$ all b's}
+
+Let $w = a^{10p}b^{i+1}b^jb^kb^{p-(i+j+k-1)}$, such that $i+j+k \le p$ and $i+k > 0$.
+If we pump $w$ with 0, then we get
+\begin{align*}
+w' &= a^{10p}b^0b^jb^0b^{p-(i+j+k-1)}\\
+	&=a^{10p}b^{p-(i+k-1)}
+\end{align*}
+Now consider $\frac{n}{k}$.
+\begin{align*}
+\frac{n}{k} &= \frac{10p}{p-(i+k-1)} \\
+	&= \frac{10}{1 - \frac{i+k-1}{p}} 
+\end{align*}
+Notice by definition, we have
+\begin{align*}
+0 < i+j+k &\le p \\
+\implies 0 < i+k &\le p \\
+\implies 0 < i+k-1 &< p \\
+\implies 0 < \frac{i+k-1}{p} &< 1 \\
+\implies 0 < 1 - \frac{i+k-1}{p} &< 1 \\
+\implies 0 < k &< 1
+\end{align*}
+So $\frac{n}{k} \not\in \mathbb{Z}$.
+Thus, $w' \not\in L_1$.
+\item
+\emph{$x^2x^3x^4$ mixture of a's and b's}
+
+If $x_2x_3x_4 = a^ib^j$, then when $w$ is being pumped for at least twice, the new string $w'$ will not be in the form $a^*b^*$.
+So $w' \not\in L_1$.
+\item
+\emph{$x^2x^3x^4$ all a's}
+
+Let $w = a^{10p+2-i-j-k}a^{i-1}a^ja^{k-1}b^p$, such that $i + k > 2$ and $i + j + k + 2 \le p$.
+If we pump it with $(p-1)$, then we get the following
+\begin{align*}
+w' = a^{10p+2-i-j-k}a^{(p-1)(i-1)}a^ja^{(p-1)(k-1)}b^{p}
+\end{align*}
+Now, consider what is $\frac{n}{k}$.
+\begin{align*}
+k &= p \\
+n &= \big(10p+2-i-j-k \big)+(p-1)(i-1)+j+(p-1)(k-1) \\
+	&= (10p - 2 - i - k) + (p-1)(i-1 + k - 1) \\
+	&= (10p - 2 - i - k) + (p-1)(i + k - 2) \\
+	&= z + (p-1)(i + k - 2) & \text{where $z > 0 \in \mathbb{N}$}
+\end{align*}
+Now, only focus on the term $(p-1)(i + k - 2)$.
+\begin{align*}
+i + j + k + 2&\le p & \text{from how we decompose $w$}\\
+\implies i+j+k &< p \\
+\implies i+k-2 &< p \\
+\frac{i+k-2}{p} &< 1 & \text{so the second term cannot make $\frac{n}{k} \in \mathbb{Z}$}
+\end{align*}
+Also, from math 135, any 2 consecutive natural numbers are coprime, so $(p-1)$ and $p$ do not have common factors other than 1.
+Thus, $(p-1)(i + k - 2)$ cannot have a common factor of $p$.
+Hence, $\frac{n}{k}\not\in \mathbb{Z}$.
+Therefore, $w' \not\in L_1$; contradiction.
+\end{itemize}
+Therefore, $L_1$ is not context-free.
+\done
