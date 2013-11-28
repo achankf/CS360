@@ -1,6 +1,15 @@
-{\bf Direction: 2SPDA is not more powerful than Turing Machine}
+Let's prove by 2-side inclusion.
+\begin{claim}
+2SPDA is not more powerful than Turing Machine
+\end{claim}
+\begin{proof}
 \input{a05q1_2spda_tm.texin}
-
-{\bf Direction: Turing Machine is not more powerful than 2SPDA}
+\end{proof}
+\begin{claim}
+Turing Machine is not more powerful than 2SPDA
+\end{claim}
+\begin{proof}
 \input{a05q1_tm_2spda.texin}
+\end{proof}
+Therefore, 2SPDA has the same computing power as Turing Machine.
 \done

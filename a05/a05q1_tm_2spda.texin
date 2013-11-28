@@ -1,0 +1,119 @@
+Given a Turing Machine $M = (Q,\Sigma,\Gamma,q_0,q_r, q_a, \delta)$.
+Construct the 2SPDA as
+\begin{align*}
+M^* &= \{Q \cup Q_2,\Sigma,\Gamma, q_0, Z_0, \delta', F=\{ q_a \} \}
+\end{align*}
+
+{\bf Representation of the tape head}
+
+Consider the construction of a tape from 2 stacks, stack 1 and stack 2, by combining the two stacks together, such that the head of the tape is located in stack 1.
+
+\begin{tabular}{|lll|}
+\hline
+(Stack 1 & Head) & (Stack 2) \\
+$Z_0 xy$ & $z$ & $x'y'z'Z_0$ \\
+\hline
+\end{tabular}
+
+{\bf Tape movement}
+
+We need to make additional states for every state in $Q$ in order to simulate a tape.
+Move to a new state $q_{ready}$ (each state in $Q$ has such a state).
+There are 3 cases:
+\begin{itemize}
+\item
+\emph{Stay}:
+If stack 1 is not empty, then remove the top of stack 1 and place the new symbol, and go on to the next state.
+
+\begin{tabular}{|lll|}
+\hline
+(Stack 1 & Head) & (Stack 2) \\
+$Z_0 xy$ & $z$ & $x'y'z'Z_0$ \\
+\hline
+\end{tabular}
+$\rightarrow$
+\begin{tabular}{|lll|}
+\hline
+(Stack 1 & Head) & (Stack 2) \\
+$Z_0 xy$ & $z''$ & $x'y'z'Z_0$ \\
+\hline
+\end{tabular}
+
+If stack 1 is empty (reading $Z_0$), then place the new symbol on stack 1.
+
+\begin{tabular}{|lll|}
+\hline
+(Stack 1 Head) & & (Stack 2) \\
+$Z_0$ &  & $x'y'z'Z_0$ \\
+\hline
+\end{tabular}
+$\rightarrow$
+\begin{tabular}{|lll|}
+\hline
+(Stack 1 & Head) & (Stack 2) \\
+$Z_0$ & $x$ & $x'y'z'Z_0$ \\
+\hline
+\end{tabular}
+
+\item
+\emph{Move Right}:
+If stack 1 is not empty, then write the input symbol on stack 2, and then remove the top of stack 1.
+
+\begin{tabular}{|lll|}
+\hline
+(Stack 1 & Head) & (Stack 2) \\
+$Z_0 xy$ & $z$ & $x'y'z'Z_0$ \\
+\hline
+\end{tabular}
+$\rightarrow$
+\begin{tabular}{|lll|}
+\hline
+(Stack 1 & Head) & (Stack 2) \\
+$Z_0 x$ & $y$ & $z''x'y'z'Z_0$ \\
+\hline
+\end{tabular}
+
+If stack 1 is empty, then ``report an error," because the definition of the Turing Machine that the professor has given is a one-side tape.
+
+\item
+\emph{Move Left}:
+If stack 2 is not empty, then replace the top of stack 1 with the new input symbol, and then move the top of stack 2 to stack 1.
+
+\begin{tabular}{|lll|}
+\hline
+(Stack 1 & Head) & (Stack 2) \\
+$Z_0 xy$ & $z$ & $x'y'z'Z_0$ \\
+\hline
+\end{tabular}
+$\rightarrow$
+\begin{tabular}{|lll|}
+\hline
+(Stack 1 & Head) & (Stack 2) \\
+$Z_0 xyz''$ & $x'$ & $y'z'Z_0$ \\
+\hline
+\end{tabular}
+
+If stack 2 is empty (upon reading $Z_0$), then place $\Delta$ on stack 1.
+Notice $\Delta$ is necessary because the one-side tape can be infinitely long by definition.
+
+\begin{tabular}{|lll|}
+\hline
+(Stack 1 & Head) & (Stack 2) \\
+$Z_0 xy$ & $z$ & $Z_0$ \\
+\hline
+\end{tabular}
+$\rightarrow$
+\begin{tabular}{|lll|}
+\hline
+(Stack 1 & Head) & (Stack 2) \\
+$Z_0 xyz''$ & $\Delta$ & $Z_0$ \\
+\hline
+\end{tabular}
+
+{\bf Accepting State and Rejecting States}
+
+Nothing needs to be changed.
+Namely, if $M^*$ has read every input and it lands on $q_a$, then accept.
+Otherwise reject or loop forever.
+\end{itemize}
+Therefore, for each Turing Machine, $M$, there exists a 2SPDA, $M^*$, such that $L(M) \subseteq L(M^*)$.

@@ -1,5 +1,5 @@
 Given a 2SPDA $M = (Q,\Sigma,\Gamma,q_0, Z_0, \delta, F)$.
-Let the Turing Machine be
+Construct the Turing Machine as
 \begin{align*}
 M^* = \{Q \cup Q_t \cup \{q_a,q_r\}, \Sigma, \Gamma \cup \{\Delta\}, q_{preprocess}, q_a, q_r, \delta' \}
 \end{align*}
@@ -86,7 +86,8 @@ $\rightarrow$
 \hline
 \end{tabular}
 
-Similarly for delete on stack 2 except we replace the tape on that position with $\Delta$.
+\item
+Similarly for \emph{delete top on stack 2} except we replace the tape on that position with $\Delta$.
 
 \begin{tabular}{|lll|}
 \hline
@@ -146,9 +147,10 @@ $\Delta Z_0w_1$ & $y$ & $Z_0w_2x\Delta\cdots$\\
 \hline
 \end{tabular}
 
-Similarly for delete, in which $M^*$ deletes the symbol for stack 2, and then process stack 1.
+\item
+Similarly for \emph{delete on both stack 1 and 2}, in which $M^*$ deletes the symbol for stack 2, and then process stack 1.
 Then, $M^*$ looks for the top of stack 1, and then copies the character on the right side one-by-one until the top of stack 2 is reach.
-Then delete the extra symbol on stack 2.
+Then delete the extra symbol on the top of stack 2.
 \item
 If the $M^*$ wants to update \emph{stack 1 only}, then follow the same procedure for both stack 1 and 2, with the input for stack 2 being empty instead.
 \item
@@ -160,4 +162,4 @@ The number of symbol remains finite because the input symbols have to be finite,
 For each state $q \in F$, we make an $\epsilon$-transition to $q_a$, the accepting state of $M^*$.
 Then for any other states, we make an $\epsilon$-transition to $q_r$, the rejecting states of $M^*$.
 
-Therefore, the Turing Machine $M^*$ can simulate the 2SPDA, $M$, so $L(M) \subseteq L(M^*)$.
+Therefore, for each 2SPDA, $M$, there exists a Turing Machine, $M^*$, such that $L(M) \subseteq L(M^*)$.
