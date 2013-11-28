@@ -6,25 +6,25 @@ Then, consider the following cases for decomposition $w = x_1x_2x_3x_4x_5$:
 \item
 \emph{$x^2x^3x^4$ all b's}
 
-Let $w = a^{10p}b^{i+1}b^jb^kb^{p-(i+j+k-1)}$, such that $i+j+k \le p$ and $i+k > 0$.
+Let $w = a^{10p}b^{i+1}b^jb^mb^{p-(i+j+m-1)}$, such that $i+j+m \le p$ and $i+m > 0$.
 If we pump $w$ with 0, then we get
 \begin{align*}
-w' &= a^{10p}b^0b^jb^0b^{p-(i+j+k-1)}\\
-	&=a^{10p}b^{p-(i+k-1)}
+w' &= a^{10p}b^0b^jb^0b^{p-(i+j+m-1)}\\
+	&=a^{10p}b^{p-(i+m-1)}
 \end{align*}
 Now consider $\frac{n}{k}$.
 \begin{align*}
-\frac{n}{k} &= \frac{10p}{p-(i+k-1)} \\
-	&= \frac{10}{1 - \frac{i+k-1}{p}} 
+\frac{n}{k} &= \frac{10p}{p-(i+m-1)} \\
+	&= \frac{10}{1 - \frac{i+m-1}{p}} 
 \end{align*}
 Notice by definition, we have
 \begin{align*}
-0 < i+j+k &\le p \\
-\implies 0 < i+k &\le p \\
-\implies 0 < i+k-1 &< p \\
-\implies 0 < \frac{i+k-1}{p} &< 1 \\
-\implies 0 < 1 - \frac{i+k-1}{p} &< 1 \\
-\implies 0 < k &< 1
+0 < i+j+m &\le p \\
+\implies 0 < i+m &\le p \\
+\implies 0 < i+m-1 &< p \\
+\implies 0 < \frac{i+m-1}{p} &< 1 \\
+\implies 0 < 1 - \frac{i+m-1}{p} &< 1 \\
+\implies 0 < d &< 1
 \end{align*}
 So $\frac{n}{k} \not\in \mathbb{Z}$.
 Thus, $w' \not\in L_1$.
@@ -36,28 +36,28 @@ So $w' \not\in L_1$.
 \item
 \emph{$x^2x^3x^4$ all a's}
 
-Let $w = a^{10p+2-i-j-k}a^{i-1}a^ja^{k-1}b^p$, such that $i + k > 2$ and $i + j + k + 2 \le p$.
+Let $w = a^{10p+2-i-j-m}a^{i-1}a^ja^{m-1}b^p$, such that $i + m > 2$ and $i + j + m + 2 \le p$.
 If we pump it with $(p-1)$, then we get the following
 \begin{align*}
-w' = a^{10p+2-i-j-k}a^{(p-1)(i-1)}a^ja^{(p-1)(k-1)}b^{p}
+w' = a^{10p+2-i-j-m}a^{(p-1)(i-1)}a^ja^{(p-1)(m-1)}b^{p}
 \end{align*}
 Now, consider what is $\frac{n}{k}$.
 \begin{align*}
 k &= p \\
-n &= \big(10p+2-i-j-k \big)+(p-1)(i-1)+j+(p-1)(k-1) \\
-	&= (10p - 2 - i - k) + (p-1)(i-1 + k - 1) \\
-	&= (10p - 2 - i - k) + (p-1)(i + k - 2) \\
-	&= z + (p-1)(i + k - 2) & \text{where $z > 0 \in \mathbb{N}$}
+n &= \big(10p+2-i-j-m \big)+(p-1)(i-1)+j+(p-1)(m-1) \\
+	&= (10p - 2 - i - m) + (p-1)(i-1 + m - 1) \\
+	&= (10p - 2 - i - m) + (p-1)(i + m - 2) \\
+	&= z + (p-1)(i + m - 2) & \text{where $z > 0 \in \mathbb{N}$}
 \end{align*}
-Now, only focus on the term $(p-1)(i + k - 2)$.
+Now, only focus on the term $(p-1)(i + m - 2)$.
 \begin{align*}
-i + j + k + 2&\le p & \text{from how we decompose $w$}\\
-\implies i+j+k &< p \\
-\implies i+k-2 &< p \\
-\frac{i+k-2}{p} &< 1 & \text{so the second term cannot make $\frac{n}{k} \in \mathbb{Z}$}
+i + j + m + 2&\le p & \text{from how we decompose $w$}\\
+\implies i+j+m &< p \\
+\implies i+m-2 &< p \\
+\frac{i+m-2}{p} &< 1 & \text{so the second term cannot make $\frac{n}{k} \in \mathbb{Z}$}
 \end{align*}
 Also, from math 135, any 2 consecutive natural numbers are coprime, so $(p-1)$ and $p$ do not have common factors other than 1.
-Thus, $(p-1)(i + k - 2)$ cannot have a common factor of $p$.
+Thus, $(p-1)(i + m - 2)$ cannot have a common factor of $p$.
 Hence, $\frac{n}{k}\not\in \mathbb{Z}$.
 Therefore, $w' \not\in L_1$; contradiction.
 \end{itemize}
