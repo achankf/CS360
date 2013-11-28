@@ -8,7 +8,7 @@ Since $|y| \ge 1$ and $|xy| \le p$, so $y$ can either consists of
 \item
 \emph{$xy$ all b's}
 
-Impossible because $w$ has too many $a$'s ($10p$ of them), but $|xy| \le p$.
+Impossible because $w$ has too many $a$'s ($p$ of them), but $|xy| \le p$.
 \item
 \emph{$xy$ all a's}
 

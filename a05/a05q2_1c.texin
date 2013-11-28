@@ -4,7 +4,7 @@ Let $p > 1000$ be the pumping length, and let $w = a^{10p}b^{p} \in L_1$, becaus
 Then, consider the following cases for decomposition $w = x_1x_2x_3x_4x_5$:
 \begin{itemize}
 \item
-\emph{$x^2x^3x^4$ all b's}
+\emph{$x_2x_3x_4$ all b's}
 
 Let $w = a^{10p}b^{i+1}b^jb^mb^{p-(i+j+m-1)}$, such that $i+j+m \le p$ and $i+m > 0$.
 If we pump $w$ with 0, then we get
@@ -29,12 +29,12 @@ Notice by definition, we have
 So $\frac{n}{k} \not\in \mathbb{Z}$.
 Thus, $w' \not\in L_1$.
 \item
-\emph{$x^2x^3x^4$ mixture of a's and b's}
+\emph{$x_2x_3x_4$ mixture of a's and b's}
 
 If $x_2x_3x_4 = a^ib^j$, then when $w$ is being pumped for at least twice, the new string $w'$ will not be in the form $a^*b^*$.
 So $w' \not\in L_1$.
 \item
-\emph{$x^2x^3x^4$ all a's}
+\emph{$x_2x_3x_4$ all a's}
 
 Let $w = a^{10p+2-i-j-m}a^{i-1}a^ja^{m-1}b^p$, such that $i + m > 2$ and $i + j + m + 2 \le p$.
 If we pump it with $(p-1)$, then we get the following

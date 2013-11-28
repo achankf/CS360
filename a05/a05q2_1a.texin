@@ -1,18 +1,33 @@
-$q_0$ is the state of reading one $a$ and turing it into $A$.
-\begin{itemize}
-\item
-Reading $a$, then change it it $A$, and goto $q_1$
-\item
-Reading $\Delta$, then reject because $\frac{n}{k}$ is undefined for $k = 0$.
-\item
-Reading $b$, then move to $q_1$.
-\item
-Reading $B$, then move to $q_{check}$.
-\end{itemize}
+{\bf Idea}
+Use the fact that $n = ck$ for some integer $c \ge 0$, and then repeatedly turning $k$ number of $a$'s into $A$; meanwhile, $b$'s are turned into $B$ to keep track of progress.
+If the tape run out of $b$'s, then the machine will turn all $B$'s into $b$'s.
+After the tape has no more $a$'s, the machine will check whether the tape has any $b$.
 
-$q_1$ is the state of reading $b$'s and turning them into $B$'s.
+Let construct the Turing Machine $M = (Q, \{a,b\}, \{A,B,\Delta\}, \cdots)$, where $Q$ consists of the following states and transitions.
+
 \begin{itemize}
 \item
-Reading $a$, then reject because $M$ has matched $a^*ba \not\in L_1$.
+First, run the DFA for $a^*b^*$ to make sure the input has the correct form.
+\item
+$q_0$ (the start state) is the state of reading the first character.
+If the first character is an $a$, then goto $q_1$; otherwise if it is not $\Delta$, then accept (the numerator is 0); otherwise if it is $\Delta$, then reject because $M$ is trying to divide by 0.
+\item
+$q_1$ is the state of reading one $a$ and turing it into $A$.
+Then goto $q_{next\_b}$.
+\item
+$q_2$ is the state of reading one $b$ and turning it into $B$.
+Then goto $q_{back}$.
+\item
+$q_{back}$ is the state for moving the head back to the first occurrence of $a$.
+If found, then goto $q_1$; otherwise goto $q_{last}$.
+\item
+$q_{next\_b}$ is the state for finding the the next available $b$.
+If found, then goto $q_2$; otherwise goto $q_{free}$.
+\item
+$q_{free}$ is the state that turns all $B$'s into $b$'s.
+Then goto $q_{next\_b}$.
+\item
+$q_{last}$ is the state for checking whether there is any remaining $b$.
+If so, then reject; otherwise accept, since the tape has no more $a$'s and $b$'s, which implies $k$ divides $n$.
 \end{itemize}
 \done
