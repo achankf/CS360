@@ -1,7 +1,6 @@
 Suppose $L_1$ is regular.
-Let $p > 1000$ be the pumping length.
+Let $p > 20$ be the pumping length.
 Let $w = a^pb^{p}$, which is in $L_1$ because $n/k = 1 \in \mathbb{Z}$, and $|w| \ge p$.
-Clearly, $w$ is longer than $p$.
 Then, consider the splitting of $w$ into $xyz$.
 Since $|y| \ge 1$ and $|xy| \le p$, so $y$ can either consists of
 \begin{itemize}
@@ -18,8 +17,8 @@ If we pump $w$ with 0, then in this case we have
 w' &= (a^{i})(a^0)(a^{p-i-j-1}b^p) \\
 w' &= a^{p-j-1}b^p \\
 \implies \frac{n}{k} &= \frac{p-j-1}{p} \\
-\implies \frac{n}{k} &= 1 + \frac{j+1}{p} \\
-\implies	1 &< \frac{n}{k} < 2 \not\in \mathbb{Z} & \text{because $j+1 < p$}
+\implies \frac{n}{k} &= 1 - \frac{j+1}{p} \\
+\implies	0 &< \frac{n}{k} < 1 \not\in \mathbb{Z} & \text{because $j+1 < p$}
 \end{align*}
 Thus, $w'$ is not in $L_1$.
 \item

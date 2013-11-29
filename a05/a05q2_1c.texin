@@ -1,5 +1,5 @@
 $L_1$ is not context-free.
-Let $p > 1000$ be the pumping length, and let $w = a^{10p}b^{p} \in L_1$, because $10p/p = 10 \in \mathbb{Z}$, and $|w| \ge p$.
+Let $p > 20$ be the pumping length, and let $w = a^{10p}b^{p} \in L_1$, because $10p/p = 10 \in \mathbb{Z}$, and $|w| \ge p$.
 
 Then, consider the following cases for decomposition $w = x_1x_2x_3x_4x_5$:
 \begin{itemize}
@@ -24,7 +24,7 @@ Notice by definition, we have
 \implies 0 < i+m-1 &< p \\
 \implies 0 < \frac{i+m-1}{p} &< 1 \\
 \implies 0 < 1 - \frac{i+m-1}{p} &< 1 \\
-\implies 0 < d &< 1
+\implies 0 < k &< 1
 \end{align*}
 So $\frac{n}{k} \not\in \mathbb{Z}$.
 Thus, $w' \not\in L_1$.

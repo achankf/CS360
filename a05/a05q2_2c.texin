@@ -1,1 +1,23 @@
-(blank)
+Not context-free.
+Suppose by way of contradiction that $L_2$ is context-free.
+Let $p > k$ be a \emph{prime} number for the pumping length, where $k$ is a prime number; choose the word $w = b^p$, which is in $L_2$, and $|w| \ge p$.
+Then, consider the only possible decomposition $x = x_1x_2x_3x_4x_5$, which the following sizes:
+\begin{align*}
+|x_1| &= r \\
+|x_2| &= s \\
+|x_3| &= t \\
+|x_4| &= u \\
+|x_5| &= v
+\end{align*}
+such that $r+s+t+u+v = p$, and $|x_2x_4| \ge 1$ and $|x_2x_3x_4| \le n$.
+If $k = r+t+v$, then $w\ = x_1x_2^kx_3x_4^kx_5$ has a length of
+\begin{align*}
+|w'| &= r + s (r+t+v) + t + u (r+t+v) + v \\
+	&= (s+u)(r+t+v) + (r+t+v)\\
+	&= \underbrace{(s+u+1)}_\text{$\ge 2$ since $s+u \ge 1$;}
+		\times
+			\underbrace{(r+t+v)}_\text{$\ge 2$ since $p \ge n + 2$ and $s+t+u \ge n$}
+\end{align*}
+So the number of $a$'s is even, and the number of $b$'s is not a prime number; hence $w' \not\in L_2$, a contradiction.
+Therefore, $L_2$ is not context-free.
+\done

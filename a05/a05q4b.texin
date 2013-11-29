@@ -1,0 +1,21 @@
+Assume that the given decision problem is computable.
+Let {\tt SAME} be the Turing Machine of the given decision problem, and $H$ be a Turing machine that does not halt.
+Let's define the Turing Machine as follows.
+\begin{align*}
+M_w(x) =
+	\begin{cases}
+		\text{run {\tt SAME} on (M,H)} & x = w \\
+		\text{reject} & \text{otherwise}
+	\end{cases}
+\end{align*}
+The output:
+\begin{itemize}
+\item
+{\tt SAME} accepts if $M$ \emph{never halts}; so output reject;
+\item
+{\tt SAME} rejects if $M$ \emph{halts}; so output accept.
+\end{itemize}
+Thus, {\tt SAME} solves the halting problem.
+So, contradiction.
+Therefore, {\tt SAME} is undecidable.
+\done

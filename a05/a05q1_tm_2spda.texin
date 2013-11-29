@@ -1,7 +1,7 @@
 Given a Turing Machine $M = (Q,\Sigma,\Gamma,q_0,q_r, q_a, \delta)$.
 Construct the 2SPDA as
 \begin{align*}
-M^* &= \{Q \cup Q_2,\Sigma,\Gamma, q_0, Z_0, \delta', F=\{ q_a \} \}
+M^* &= \{Q,\Sigma,\Gamma \cup \{Z_0\}, q_0, Z_0, \delta', F=\{ q_a \} \}
 \end{align*}
 
 {\bf Representation of the tape head}
@@ -17,13 +17,11 @@ $Z_0 xy$ & $z$ & $x'y'z'Z_0$ \\
 
 {\bf Tape movement}
 
-We need to make additional states for every state in $Q$ in order to simulate a tape.
-Move to a new state $q_{ready}$ (each state in $Q$ has such a state).
 There are 3 cases:
 \begin{itemize}
 \item
 \emph{Stay}:
-If stack 1 is not empty, then remove the top of stack 1 and place the new symbol, and go on to the next state.
+If stack 1 is not empty, then remove the top of stack 1 and place the new symbol.
 
 \begin{tabular}{|lll|}
 \hline

@@ -4,24 +4,24 @@ Use the dumb method of testing from 2 to $k-1$, and see if at least one of them 
 This can be simulated by repeatedly running the decision version of the Turing Machine for $L_1$ as a subroutine, such that it returns ``T" if and only if $k$ divides $n$; otherwise returns ``F."
 That value is stored after the right-most $b$ of the tape.
 Then after each run, remove the left-most $a$ from the tape util only one $a$ remains.
-For example, the tape would look like $aaaa \cdots aaa bbbb \cdots bbbb T$.
+For example, the tape would look like $aaaa \cdots aaa bbbb \cdots bbbb T \Delta \cdots$.
 
-Now, let's construct the Turing Machine $M = ($
+Now, let's construct the Turing Machine $M = (Q, \{ a,b\}, \{T,F,\Delta\}, \cdots)$, with $Q$ and $\delta$ being discussed below.
 
 \begin{itemize}
 \item
 First, run the DFA for $a^*b^*$ to make sure the input has the correct form.
 \item
 $q_0$ (the start state) is the state of reading the first character.
-If the first character is an $a$, then goto $q_{check\_even}$; otherwise if it is not $\Delta$, then goto $q_{even}$; otherwise if it is $\Delta$, then reject because $M$ is trying to divide by 0.
+If the first character is an $a$, then goto $q_{check\_even}$; otherwise if it is not $\Delta$, then goto $q_{prime\_even}$; otherwise if it is $\Delta$, then reject because $M$ is trying to divide by 0.
 \item
 $q_{check\_even}$ is the state of checking whether the tape has odd or even number of $a$'s.
 This state represents the tape has an even number of $a$'s.
 Similarly for the state $q_{check\_odd}$.
 If the number of $a$'s is odd, then goto $q_{prime\_odd}$; otherwise if the number of $a$'s is even, then goto $q_{prime\_even}$.
 \item
-$q_{prime\_even}$ takes off the right-most $a$, and then repeatedly pass the tape to $L_1$'s Turing Machine until the tape has only 1 $a$ left (running for $2$ to $n-1$.
-If the right-most character before $\Delta$ is $T$, then accept; otherwise reject.
-Similarly for $q_{prime\_odd}$, except it accepts if and only if the right-most character before $\Delta$ is $F$.
+$q_{prime\_even}$ repeatedly takes off the right-most $a$, and then pass the tape to $L_1$'s Turing Machine until the tape has only 1 $a$ left (tests for factors of $2$ to $n-1$).
+If the right-most character before $\Delta$ is $F$ \emph{for every run} (make sure no factor is found; aka prime), then accept; otherwise reject.
+Similarly for $q_{prime\_odd}$, except it accepts if and only if the right-most character before $\Delta$ is $T$ \emph{for some run} (to find a factor; aka not prime).
 \end{itemize}
 \done

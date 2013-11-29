@@ -123,7 +123,7 @@ Notice here we are creating new states for each state that needs copying, so we 
 Then following similar steps as writing to stack 2, except $M^*$ will transition to a new state $q_{search1}$.
 At this point, $M^*$ looks for the top of stack 2, and then transition to a new state $q_{make\_space}$.
 
-In $q_{make\_space}$, $M^*$ moves the head to the right, and then copies from the left (think of shifting a character beyond the end).
+In $q_{make\_space}$, $M^*$ moves the head to the right, and then copies from the left.
 Then, repeat util the head reaches the top of stack 1.
 Then replaces the duplicate $Z_0$ with the input character for stack 1.
 Finally, go to the next state of $q$.

@@ -1,0 +1,22 @@
+Assume that the given decision problem is computable.
+Let {\tt INFINITE} be its Turing Machine.
+Suppose the input to the Halting problem is $(M,w)$.
+Let's define the following Turning Machine $M_w$ as follows.
+\begin{align*}
+M_w(x) &=
+	\begin{cases}
+		\text{run {\tt INFINITE} on $M$} & \text{if $x=w$}\\
+		\text{reject} & \text{otherwise}
+	\end{cases} 
+\end{align*}
+So the output:
+\begin{itemize}
+\item
+{\tt INFINITE} accepts if $M$ \emph{halts} on infinitely many inputs; so output accept;
+\item
+{\tt INFINITE} rejects if $M$ \emph{does not halt} on infinitely many inputs; so output reject.
+\end{itemize}
+So {\tt INFINITE} has just decided the Halting problem.
+However, the Halting problem is undecidable; hence a contradiction.
+Therefore, {\tt INFINITE} is undecidable.
+\done

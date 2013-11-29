@@ -1,31 +1,18 @@
-Suppose $L_2$ is regular.
-There are two cases:
-\begin{itemize}
-\item
-$n$ is an even number and $k$ is a prime number:
+Not regular.
+Suppose by way of contradiction that $L_2$ is regular.
 
-Let $p > k + 2$ be the pumping length.
+Let $p > k + 2$ be the pumping length be a prime number.
 
 Let $w = b^p$.
-Clearly, $w \in L_2$.
-Let a decomposition of $w$ be $x = b^i$, $y = b^j$, $z = b^{p-i-j}$, such that $|y| \ge 1$ and $|xy| \le p$.
+Clearly, $w \in L_2$, and $|w| \ge p$.
+The only decomposition of $w$ is $x = b^i$, $y = b^j$, $z = b^{p-i-j}$, such that $|y| \ge 1$ and $|xy| \le p$.
 Then,
 \begin{align*}
 xy^{p-j}z &= b^ib^{j(p-j)}b^{p-i-j} \\
 	&= b^{j(p-j)}b^{p-j} \\
 	&= b^{(j+1)(p-j)}
 \end{align*}
-Since $j \ge 1$ and $p \ge k + 2$, so $|xy^{p-j}z| \ge 2k \ge 4$, so the case where $(j+1)(p-j) = 2$ is impossible.
-So the size of the pumped string is a composite number, so it is not in $L_2$.
-\item
-$n$ is an odd number and $k$ is not a prime number:
-
-Consider the language $L = \{b^k : k $ is not a prime number$\}$.
-Suppose $L$ is regular.
-Recall a theorem that a language is regular if and only if its complement is regular.
-However, $\Sigma^* \setminus L = \{b^p : p $ is a prime number$\}$, which not a regular language.
-Therefore, $L$ is not regular.
-Consequently, no DFA can simulate the part $b^k$, so this case is not regular.
-\end{itemize}
-Together, we have $L_2$ is not regular.
+Since $j \ge 1$ and $p \ge k + 2$, so $|xy^{p-j}z| \ge 4$, so the case where $(j+1)(p-j) = 2$ is impossible.
+So the the number of $a$'s is even and number of $b$'s is a composite number, so it is not in $L_2$; which is a contradication.
+Therefore, by the pumping lemma $L_2$ is not regular.
 \done
